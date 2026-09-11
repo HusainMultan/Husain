@@ -14,7 +14,16 @@
       {%- else -%}
         {%- for i in (1..section.settings.product_count) -%}
           <div class="product-card">
-            <div class="product-card__media">{{ 'product-' | append: i | placeholder_svg_tag }}</div>
+            <div class="product-card__media">
+              {%- case i -%}
+                {%- when 1 -%}{{ 'product-1' | placeholder_svg_tag }}
+                {%- when 2 -%}{{ 'product-2' | placeholder_svg_tag }}
+                {%- when 3 -%}{{ 'product-3' | placeholder_svg_tag }}
+                {%- when 4 -%}{{ 'product-4' | placeholder_svg_tag }}
+                {%- when 5 -%}{{ 'product-5' | placeholder_svg_tag }}
+                {%- else -%}{{ 'product-6' | placeholder_svg_tag }}
+              {%- endcase -%}
+            </div>
             <div class="product-card__info">
               <h3 class="product-card__title">Select a collection in Theme Editor</h3>
             </div>
