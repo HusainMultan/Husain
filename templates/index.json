@@ -30,7 +30,7 @@
       }
     },
     "new_arrivals": {
-      "type": "featured-products",
+      "type": "product-grid",
       "settings": {
         "eyebrow": "New In",
         "heading": "New Arrivals",
@@ -53,7 +53,7 @@
       }
     },
     "best_sellers": {
-      "type": "featured-products",
+      "type": "product-grid",
       "settings": {
         "eyebrow": "Loved by Customers",
         "heading": "Best Sellers",
