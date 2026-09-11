@@ -39,7 +39,7 @@
 
     <div class="product-card__quickadd">
       {%- if product.has_only_default_variant and product.available -%}
-        <form data-product-form action="/cart/add" method="post" enctype="multipart/form-data">
+        <form data-product-form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
           <input type="hidden" name="quantity" value="1">
           <button type="submit" class="btn btn--small btn--full">Add to Basket</button>

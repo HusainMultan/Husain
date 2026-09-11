@@ -34,7 +34,7 @@
 
       {%- if cart.item_count == 0 -%}
         <p>{{ 'cart.general.empty' | t }}</p>
-        <a href="/collections/all" class="btn btn--outline">{{ 'cart.general.continue_shopping' | t }}</a>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--outline">{{ 'cart.general.continue_shopping' | t }}</a>
       {%- else -%}
         {%- for item in cart.items -%}
           <div class="cart-line">

@@ -1,10 +1,10 @@
 <nav class="breadcrumbs page-width" aria-label="Breadcrumb">
-  <a href="/">Home</a>
+  <a href="{{ routes.root_url }}">Home</a>
   {%- if template contains 'collection' and collection -%}
-    <span aria-hidden="true"> / </span><a href="/collections">Jewellery</a>
+    <span aria-hidden="true"> / </span><a href="{{ routes.collections_url }}">Jewellery</a>
     <span aria-hidden="true"> / </span><span aria-current="page">{{ collection.title }}</span>
   {%- elsif template contains 'product' and product -%}
-    <span aria-hidden="true"> / </span><a href="/collections/all">Jewellery</a>
+    <span aria-hidden="true"> / </span><a href="{{ routes.all_products_collection_url }}">Jewellery</a>
     {%- if collection -%}
       <span aria-hidden="true"> / </span><a href="{{ collection.url }}">{{ collection.title }}</a>
     {%- endif -%}

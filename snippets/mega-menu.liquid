@@ -22,7 +22,7 @@
       <div class="mega-menu__col mega-menu__feature">
         <a href="{{ link.url }}">
           {%- if feature_collection.featured_image -%}
-            <img src="{{ feature_collection.featured_image | image_url: width: 400 }}" alt="" loading="lazy">
+            <img src="{{ feature_collection.featured_image | image_url: width: 400 }}" alt="" loading="lazy" width="{{ feature_collection.featured_image.width }}" height="{{ feature_collection.featured_image.height }}">
           {%- else -%}
             {{ 'collection-1' | placeholder_svg_tag }}
           {%- endif -%}

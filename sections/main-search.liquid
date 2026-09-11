@@ -9,7 +9,7 @@
     </h1>
   </div>
 
-  <form action="/search" method="get" role="search" style="max-width: 480px; margin-bottom: 32px; display:flex; gap:10px;">
+  <form action="{{ routes.search_url }}" method="get" role="search" style="max-width: 480px; margin-bottom: 32px; display:flex; gap:10px;">
     <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" style="flex:1; padding: 13px 16px; border:1px solid var(--color-border); border-radius: var(--radius);">
     <input type="hidden" name="type" value="product,collection,page,article">
     <button type="submit" class="btn">{{ 'general.search.search' | t }}</button>
@@ -18,7 +18,7 @@
   {%- if search.performed -%}
     {%- if search.results_count == 0 -%}
       <p>{{ 'general.search.no_results' | t: terms: search.terms }}</p>
-      <a href="/collections/all" class="btn btn--outline">Continue Shopping</a>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn--outline">Continue Shopping</a>
     {%- else -%}
       <div class="grid grid--4">
         {%- for item in search.results -%}
@@ -29,7 +29,7 @@
               <a href="{{ item.url }}">
                 <div class="product-card__media">
                   {%- if item.image or item.featured_image -%}
-                    <img src="{{ item.featured_image | default: item.image | image_url: width: 700 }}" alt="{{ item.title | escape }}" loading="lazy">
+                    <img src="{{ item.featured_image | default: item.image | image_url: width: 700 }}" alt="{{ item.title | escape }}" loading="lazy" width="{{ item.featured_image.width | default: item.image.width }}" height="{{ item.featured_image.height | default: item.image.height }}">
                   {%- else -%}
                     {{ 'collection-1' | placeholder_svg_tag }}
                   {%- endif -%}

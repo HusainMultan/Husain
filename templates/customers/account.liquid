@@ -8,7 +8,7 @@
   <h2 style="margin-top: 40px;">{{ 'customer.account.orders' | t }}</h2>
   {%- if customer.orders.size == 0 -%}
     <p>You haven't placed any orders yet.</p>
-    <a href="/collections/all" class="btn btn--outline">Continue Shopping</a>
+    <a href="{{ routes.all_products_collection_url }}" class="btn btn--outline">Continue Shopping</a>
   {%- else -%}
     <table style="width:100%; border-collapse: collapse;">
       <thead><tr style="text-align:left; border-bottom: 1px solid var(--color-border);"><th style="padding:10px 0;">Order</th><th>Date</th><th>Payment</th><th>Fulfillment</th><th>Total</th></tr></thead>

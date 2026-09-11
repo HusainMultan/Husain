@@ -4,7 +4,7 @@
       {% render 'icon', name: 'menu' %}
     </button>
 
-    <a href="/" class="site-header__logo" style="--logo-width: {{ section.settings.logo_width | default: settings.logo_width }}px;">
+    <a href="{{ routes.root_url }}" class="site-header__logo" style="--logo-width: {{ section.settings.logo_width | default: settings.logo_width }}px;">
       {% render 'logo' %}
     </a>
 

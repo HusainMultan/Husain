@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Karim Jewellers",
+    "theme_name": "Karun Jewellers",
     "theme_version": "1.0.0",
-    "theme_author": "Karim Jewellers",
-    "theme_documentation_url": "https://karimjewellers.example.com",
-    "theme_support_email": "support@karimjewellers.example.com"
+    "theme_author": "Karun Jewellers",
+    "theme_documentation_url": "https://github.com/HusainMultan/Husain",
+    "theme_support_url": "https://github.com/HusainMultan/Husain/issues"
   },
   {
     "name": "Logo",
@@ -14,7 +14,7 @@
         "type": "image_picker",
         "id": "logo",
         "label": "Logo image",
-        "info": "Recommended: transparent PNG/SVG of the Karim Jewellers logo. Upload the supplied brand asset here."
+        "info": "Recommended: transparent PNG/SVG of the Karun Jewellers logo. Upload the supplied brand asset here."
       },
       {
         "type": "range",

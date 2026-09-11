@@ -20,7 +20,7 @@
     },
     "newsletter": {
       "heading": "Stay Close to What Inspires You",
-      "subtext": "Sign up for new arrivals, jewellery inspiration and exclusive updates from Karim Jewellers.",
+      "subtext": "Sign up for new arrivals, jewellery inspiration and exclusive updates from Karun Jewellers.",
       "placeholder": "Enter your email address",
       "button": "Subscribe",
       "success": "Thank you for subscribing.",
@@ -134,7 +134,7 @@
       "phone": "Telephone (optional)",
       "message": "Message",
       "send": "Send Enquiry",
-      "success": "Thank you — your enquiry has been received. A member of the Karim Jewellers team will be in touch shortly.",
+      "success": "Thank you — your enquiry has been received. A member of the Karun Jewellers team will be in touch shortly.",
       "error": "There was a problem sending your message. Please try again."
     }
   }

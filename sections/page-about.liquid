@@ -1,12 +1,12 @@
 <section class="hero" data-animate>
   <div class="hero__media">
     {%- if section.settings.hero_image -%}
-      <img src="{{ section.settings.hero_image | image_url: width: 2000 }}" alt="{{ section.settings.hero_heading | escape }}" loading="eager">
+      <img src="{{ section.settings.hero_image | image_url: width: 2000 }}" alt="{{ section.settings.hero_heading | escape }}" loading="eager" width="{{ section.settings.hero_image.width }}" height="{{ section.settings.hero_image.height }}">
     {%- else -%}
       {{ 'lifestyle-2' | placeholder_svg_tag }}
     {%- endif -%}
     <div class="hero__content">
-      <span class="eyebrow">About Karim Jewellers</span>
+      <span class="eyebrow">About Karun Jewellers</span>
       <h1>{{ section.settings.hero_heading }}</h1>
     </div>
   </div>
@@ -68,7 +68,7 @@
   "settings": [
     { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
     { "type": "text", "id": "hero_heading", "label": "Hero heading", "default": "Elegance, Craftsmanship, Care" },
-    { "type": "textarea", "id": "intro", "label": "Introduction", "default": "Karim Jewellers is a UK jewellery retailer with a home in both London and Birmingham. We bring together considered design, quality materials and personal service — placeholder introduction, to be replaced with the brand's own words." },
+    { "type": "textarea", "id": "intro", "label": "Introduction", "default": "Karun Jewellers is a UK jewellery retailer with a home in both London and Birmingham. We bring together considered design, quality materials and personal service — placeholder introduction, to be replaced with the brand's own words." },
     { "type": "image_picker", "id": "philosophy_image", "label": "Philosophy image" },
     { "type": "text", "id": "philosophy_heading", "label": "Philosophy heading", "default": "Designed to Be Treasured" },
     { "type": "richtext", "id": "philosophy_text", "label": "Philosophy text", "default": "<p>We believe jewellery should be chosen thoughtfully — pieces that suit how you live, not just how you dress up. Placeholder copy, ready to be replaced.</p>" },

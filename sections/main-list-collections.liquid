@@ -2,7 +2,7 @@
   <div class="section-header" data-animate>
     <span class="eyebrow">Shop</span>
     <h1>All Jewellery</h1>
-    <p>Browse the full Karim Jewellers collection.</p>
+    <p>Browse the full Karun Jewellers collection.</p>
   </div>
   <div class="grid grid--3">
     {%- for collection in collections -%}
@@ -10,7 +10,7 @@
         <a href="{{ collection.url }}" class="collection-card" data-animate>
           <div class="collection-card__media">
             {%- if collection.featured_image -%}
-              <img src="{{ collection.featured_image | image_url: width: 800 }}" alt="{{ collection.title | escape }}" loading="lazy">
+              <img src="{{ collection.featured_image | image_url: width: 800 }}" alt="{{ collection.title | escape }}" loading="lazy" width="{{ collection.featured_image.width }}" height="{{ collection.featured_image.height }}">
             {%- else -%}
               {{ 'collection-1' | placeholder_svg_tag }}
             {%- endif -%}

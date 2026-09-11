@@ -1,4 +1,4 @@
-/* Karim Jewellers — global behaviour. No framework, progressive enhancement. */
+/* Karun Jewellers — global behaviour. No framework, progressive enhancement. */
 (function () {
   "use strict";
 
@@ -287,7 +287,7 @@
   }
 
   /* ---------- Wishlist (localStorage-based demo implementation) ---------- */
-  var WISHLIST_KEY = "karim-jewellers-wishlist";
+  var WISHLIST_KEY = "karun-jewellers-wishlist";
   function getWishlist() {
     try { return JSON.parse(localStorage.getItem(WISHLIST_KEY) || "[]"); } catch (e) { return []; }
   }

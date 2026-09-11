@@ -1,6 +1,6 @@
-# Karim Jewellers — Shopify Online Store 2.0 Theme
+# Karun Jewellers — Shopify Online Store 2.0 Theme
 
-A premium, UK-focused Shopify theme for **Karim Jewellers** (London &
+A premium, UK-focused Shopify theme for **Karun Jewellers** (London &
 Birmingham), built from scratch on Online Store 2.0 architecture (JSON
 templates, sections, blocks, theme settings) — no external frameworks.
 
@@ -16,7 +16,7 @@ templates, sections, blocks, theme settings) — no external frameworks.
 
 ## ⚠️ Logo — action required
 
-The official logo (Karim Jewellers wordmark, diamond mark, "LONDON" /
+The official logo (Karun Jewellers wordmark, diamond mark, "LONDON" /
 "BIRMINGHAM") was supplied as a reference image only; its binary file
 could not be extracted into this repository. Until it's uploaded, the
 header/footer show a styled text fallback so the site is never broken.

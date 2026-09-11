@@ -2,7 +2,7 @@
   <div class="page-width">
     <div class="footer-grid">
       <div>
-        <a href="/" class="footer-logo" style="display:inline-block; margin-bottom: 16px;">{% render 'logo', class: 'footer-logo', context: 'footer' %}</a>
+        <a href="{{ routes.root_url }}" class="footer-logo" style="display:inline-block; margin-bottom: 16px;">{% render 'logo', class: 'footer-logo', context: 'footer' %}</a>
         <p style="color: rgba(255,255,255,0.75); max-width: 32ch;">{{ section.settings.footer_text | default: "Timeless jewellery, thoughtfully chosen. Visit us in London and Birmingham." }}</p>
         <div class="footer-locations">
           <strong style="color:#fff;">{{ settings.london_label }}</strong> &middot; <strong style="color:#fff;">{{ settings.birmingham_label }}</strong>
@@ -12,12 +12,12 @@
       <div>
         <h4>Shop</h4>
         <ul>
-          <li><a href="{{ section.settings.new_arrivals_url | default: '/collections/new-arrivals' }}">New Arrivals</a></li>
-          <li><a href="/collections/rings">Rings</a></li>
-          <li><a href="/collections/earrings">Earrings</a></li>
-          <li><a href="/collections/necklaces">Necklaces</a></li>
-          <li><a href="/collections/bracelets">Bracelets</a></li>
-          <li><a href="/collections/best-sellers">Best Sellers</a></li>
+          <li><a href="{{ section.settings.new_arrivals_url | default: collections['new-arrivals'].url }}">New Arrivals</a></li>
+          <li><a href="{{ collections['rings'].url | default: routes.all_products_collection_url }}">Rings</a></li>
+          <li><a href="{{ collections['earrings'].url | default: routes.all_products_collection_url }}">Earrings</a></li>
+          <li><a href="{{ collections['necklaces'].url | default: routes.all_products_collection_url }}">Necklaces</a></li>
+          <li><a href="{{ collections['bracelets'].url | default: routes.all_products_collection_url }}">Bracelets</a></li>
+          <li><a href="{{ collections['best-sellers'].url | default: routes.all_products_collection_url }}">Best Sellers</a></li>
         </ul>
       </div>
 
@@ -35,7 +35,7 @@
       <div>
         <h4>About</h4>
         <ul>
-          <li><a href="/pages/about-us">About Karim Jewellers</a></li>
+          <li><a href="/pages/about-us">About Karun Jewellers</a></li>
           <li><a href="/pages/about-us">Our Story</a></li>
           <li><a href="/pages/contact">Contact Us</a></li>
         </ul>

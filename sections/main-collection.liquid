@@ -3,7 +3,7 @@
 <div class="page-width">
   <div class="collection-banner">
     {%- if collection.image -%}
-      <img src="{{ collection.image | image_url: width: 1800 }}" alt="{{ collection.title | escape }}" loading="eager">
+      <img src="{{ collection.image | image_url: width: 1800 }}" alt="{{ collection.title | escape }}" loading="eager" width="{{ collection.image.width }}" height="{{ collection.image.height }}">
     {%- else -%}
       {{ 'collection-1' | placeholder_svg_tag }}
     {%- endif -%}

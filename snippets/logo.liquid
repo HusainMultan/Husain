@@ -1,5 +1,5 @@
 {%- comment -%}
-  Renders the Karim Jewellers logo, falling back to styled text if no image has been uploaded
+  Renders the Karun Jewellers logo, falling back to styled text if no image has been uploaded
   in Theme Settings > Logo. Upload the supplied brand logo asset there.
   Params: class (optional extra class), context ('header' | 'footer')
 {%- endcomment -%}
@@ -18,6 +18,6 @@
   >
 {%- else -%}
   <span class="{{ logo_class }} site-header__logo-text{% if context == 'footer' %} footer-logo-text{% endif %}">
-    Karim <span style="font-family: var(--font-body); text-transform: uppercase; font-size: 0.5em; letter-spacing: 0.2em; display: block;">Jewellers</span>
+    Karun <span style="font-family: var(--font-body); text-transform: uppercase; font-size: 0.5em; letter-spacing: 0.2em; display: block;">Jewellers</span>
   </span>
 {%- endif -%}

@@ -1,4 +1,4 @@
-# Demo data setup — Karim Jewellers
+# Demo data setup — Karun Jewellers
 
 Shopify does not support importing collections via CSV, so this file documents
 how to set them up in Admin after importing `demo-products.csv`
@@ -38,7 +38,7 @@ directly (e.g. `new-arrivals`, `best-sellers`, `rings`, `earrings`,
 `necklaces`, `bracelets`) — Shopify does this automatically from the title
 unless you override it.
 
-Add a `Karim Jewellers`-appropriate image to each collection (Admin →
+Add a `Karun Jewellers`-appropriate image to each collection (Admin →
 Collections → (collection) → Image) for the homepage "Featured Collections"
 section and mega menu — otherwise a placeholder graphic is shown.
 
@@ -59,4 +59,4 @@ detail content: `material`, `stone`, `size_fit`, `care_instructions`.
 Certification, gold purity, ethical sourcing, handmade and hallmarking
 claims have deliberately been left out of all demo copy, since none of
 these can be verified for placeholder data. Add only claims that are true
-for the real Karim Jewellers catalogue.
+for the real Karun Jewellers catalogue.

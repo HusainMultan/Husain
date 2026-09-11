@@ -3,7 +3,7 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "eyebrow": "Karim Jewellers",
+        "eyebrow": "Karun Jewellers",
         "heading": "Timeless Elegance, Beautifully Crafted",
         "subtext": "Discover jewellery designed to celebrate life's most memorable moments.",
         "primary_label": "Shop Jewellery",
@@ -34,7 +34,7 @@
       "settings": {
         "eyebrow": "New In",
         "heading": "New Arrivals",
-        "subtext": "The latest additions to the Karim Jewellers collection.",
+        "subtext": "The latest additions to the Karun Jewellers collection.",
         "collection": "new-arrivals",
         "product_count": 4,
         "show_view_all": true,
@@ -47,7 +47,7 @@
         "layout": "image_left",
         "eyebrow": "Our Story",
         "heading": "A Legacy of Elegance",
-        "text": "<p>Karim Jewellers brings together considered design and quality craftsmanship, offering jewellery for everyday wear and life's most meaningful occasions. This is placeholder copy, ready to be replaced with the brand's real story.</p>",
+        "text": "<p>Karun Jewellers brings together considered design and quality craftsmanship, offering jewellery for everyday wear and life's most meaningful occasions. This is placeholder copy, ready to be replaced with the brand's real story.</p>",
         "button_label": "Discover Our Story",
         "button_link": "/pages/about-us"
       }
@@ -99,13 +99,13 @@
     },
     "visit_us": {
       "type": "visit-us",
-      "settings": { "eyebrow": "Our Showrooms", "heading": "Visit Karim Jewellers" }
+      "settings": { "eyebrow": "Our Showrooms", "heading": "Visit Karun Jewellers" }
     },
     "newsletter": {
       "type": "newsletter",
       "settings": {
         "heading": "Stay Close to What Inspires You",
-        "subtext": "Sign up for new arrivals, jewellery inspiration and exclusive updates from Karim Jewellers."
+        "subtext": "Sign up for new arrivals, jewellery inspiration and exclusive updates from Karun Jewellers."
       }
     }
   },

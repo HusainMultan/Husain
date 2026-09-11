@@ -31,7 +31,7 @@
 
       <div class="product-gallery__mobile">
         {%- for media in product.media -%}
-          <img src="{{ media | image_url: width: 900 }}" alt="{{ media.alt | default: product.title | escape }}" loading="lazy">
+          <img src="{{ media | image_url: width: 900 }}" alt="{{ media.alt | default: product.title | escape }}" loading="lazy" width="{{ media.width }}" height="{{ media.height }}">
         {%- else -%}
           {{ 'product-1' | placeholder_svg_tag }}
         {%- endfor -%}
@@ -71,7 +71,7 @@
         <div class="product-info__description">{{ product.description | strip_html | truncatewords: 40 }}</div>
       {%- endif -%}
 
-      <form data-product-form data-variant-selector data-variants="{{ variants_json | escape }}" action="/cart/add" method="post" enctype="multipart/form-data">
+      <form data-product-form data-variant-selector data-variants="{{ variants_json | escape }}" action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="{{ current_variant.id }}">
 
         {%- unless product.has_only_default_variant -%}
@@ -114,7 +114,7 @@
             {%- if current_variant.available -%}{{ 'products.product.add_to_basket' | t }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}
           </button>
           {%- if current_variant.available -%}
-            <a href="/cart/add?id={{ current_variant.id }}&quantity=1&checkout" class="btn btn--outline btn--full" data-buy-now>{{ 'products.product.buy_it_now' | t }}</a>
+            <a href="{{ routes.cart_add_url }}?id={{ current_variant.id }}&quantity=1&checkout" class="btn btn--outline btn--full" data-buy-now>{{ 'products.product.buy_it_now' | t }}</a>
           {%- endif -%}
           <p data-form-error hidden style="color: var(--color-primary); font-size: 0.85rem;"></p>
         </div>
@@ -123,7 +123,7 @@
       <ul class="trust-mini">
         <li>{% render 'icon', name: 'truck' %} {{ 'products.product.delivery_info' | t }}</li>
         <li>{% render 'icon', name: 'shield' %} {{ 'products.product.secure_checkout' | t }}</li>
-        <li>{% render 'icon', name: 'gift' %} Presented in Karim Jewellers packaging</li>
+        <li>{% render 'icon', name: 'gift' %} Presented in Karun Jewellers packaging</li>
       </ul>
 
       <div class="accordion">

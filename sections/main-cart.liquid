@@ -7,7 +7,7 @@
 
   {%- if cart.item_count == 0 -%}
     <p>{{ 'cart.general.empty' | t }}</p>
-    <a href="/collections/all" class="btn">{{ 'cart.general.continue_shopping' | t }}</a>
+    <a href="{{ routes.all_products_collection_url }}" class="btn">{{ 'cart.general.continue_shopping' | t }}</a>
   {%- else -%}
     {%- if settings.free_shipping_threshold != blank -%}
       <div class="cart-shipping-msg" style="max-width: 480px;">
@@ -20,7 +20,7 @@
       </div>
     {%- endif -%}
 
-    <form action="/cart" method="post" novalidate>
+    <form action="{{ routes.cart_url }}" method="post" novalidate>
       <div class="collection-layout">
         <div style="grid-column: 1 / -1;">
           {%- for item in cart.items -%}
@@ -47,7 +47,7 @@
           <strong>{{ cart.total_price | money }}</strong>
         </div>
         <button type="submit" name="update" class="btn btn--outline btn--full" style="margin-bottom: 10px;">{{ 'cart.general.update' | t }}</button>
-        <button type="submit" name="checkout" formaction="/cart" class="btn btn--full">{{ 'cart.general.checkout' | t }}</button>
+        <button type="submit" name="checkout" formaction="{{ routes.cart_url }}" class="btn btn--full">{{ 'cart.general.checkout' | t }}</button>
       </div>
     </form>
   {%- endif -%}

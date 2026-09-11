@@ -5,14 +5,14 @@
   </div>
   <div id="WishlistEmpty" hidden>
     <p>You haven't added anything to your wishlist yet.</p>
-    <a href="/collections/all" class="btn btn--outline">Explore Jewellery</a>
+    <a href="{{ routes.all_products_collection_url }}" class="btn btn--outline">Explore Jewellery</a>
   </div>
   <div class="grid grid--4" id="WishlistGrid"></div>
 </div>
 
 <script>
   (function () {
-    var WISHLIST_KEY = "karim-jewellers-wishlist";
+    var WISHLIST_KEY = "karun-jewellers-wishlist";
     var grid = document.getElementById("WishlistGrid");
     var emptyState = document.getElementById("WishlistEmpty");
     var handles = [];
