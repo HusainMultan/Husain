@@ -1,0 +1,100 @@
+<section class="hero" data-animate>
+  <div class="hero__media">
+    {%- if section.settings.hero_image -%}
+      <img src="{{ section.settings.hero_image | image_url: width: 2000 }}" alt="{{ section.settings.hero_heading | escape }}" loading="eager">
+    {%- else -%}
+      {{ 'lifestyle-2' | placeholder_svg_tag }}
+    {%- endif -%}
+    <div class="hero__content">
+      <span class="eyebrow">About Karim Jewellers</span>
+      <h1>{{ section.settings.hero_heading }}</h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page-width rich-text-page text-center" data-animate>
+    <p style="font-size: 1.15rem;">{{ section.settings.intro }}</p>
+  </div>
+</section>
+
+{% render 'split-content-inline',
+  eyebrow: 'Brand Philosophy',
+  heading: section.settings.philosophy_heading,
+  text: section.settings.philosophy_text,
+  image: section.settings.philosophy_image,
+  layout: 'image_left'
+%}
+
+{% render 'split-content-inline',
+  eyebrow: 'Craftsmanship',
+  heading: section.settings.craft_heading,
+  text: section.settings.craft_text,
+  image: section.settings.craft_image,
+  layout: 'image_right',
+  tint: true
+%}
+
+<section class="section">
+  <div class="page-width">
+    <div class="section-header" data-animate>
+      <span class="eyebrow">Our Values</span>
+      <h2>{{ section.settings.values_heading }}</h2>
+    </div>
+    <div class="grid grid--3">
+      {%- for block in section.blocks -%}
+        <div class="trust-item" data-animate {{ block.shopify_attributes }}>
+          {% render 'icon', name: block.settings.icon %}
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% render 'visit-us-inline' %}
+
+<section class="section bg-primary text-center" data-animate>
+  <div class="page-width">
+    <h2>{{ section.settings.cta_heading }}</h2>
+    <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="btn btn--on-dark">{{ section.settings.cta_label }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About page",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
+    { "type": "text", "id": "hero_heading", "label": "Hero heading", "default": "Elegance, Craftsmanship, Care" },
+    { "type": "textarea", "id": "intro", "label": "Introduction", "default": "Karim Jewellers is a UK jewellery retailer with a home in both London and Birmingham. We bring together considered design, quality materials and personal service — placeholder introduction, to be replaced with the brand's own words." },
+    { "type": "image_picker", "id": "philosophy_image", "label": "Philosophy image" },
+    { "type": "text", "id": "philosophy_heading", "label": "Philosophy heading", "default": "Designed to Be Treasured" },
+    { "type": "richtext", "id": "philosophy_text", "label": "Philosophy text", "default": "<p>We believe jewellery should be chosen thoughtfully — pieces that suit how you live, not just how you dress up. Placeholder copy, ready to be replaced.</p>" },
+    { "type": "image_picker", "id": "craft_image", "label": "Craftsmanship image" },
+    { "type": "text", "id": "craft_heading", "label": "Craftsmanship heading", "default": "Quality You Can Feel" },
+    { "type": "richtext", "id": "craft_text", "label": "Craftsmanship text", "default": "<p>Every piece is selected with an eye for detail and lasting quality. Placeholder copy — to be replaced with specific information about sourcing and production once confirmed.</p>" },
+    { "type": "text", "id": "values_heading", "label": "Values heading", "default": "What We Stand For" },
+    { "type": "text", "id": "cta_heading", "label": "CTA heading", "default": "Discover the Collection" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Shop Jewellery" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "diamond", "options": [
+          { "value": "diamond", "label": "Diamond" },
+          { "value": "shield", "label": "Trust" },
+          { "value": "headset", "label": "Service" },
+          { "value": "gift", "label": "Presentation" }
+        ]},
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ]
+}
+{% endschema %}

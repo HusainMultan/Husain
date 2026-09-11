@@ -1,0 +1,41 @@
+<section class="split-section{% if section.settings.layout == 'image_right' %} reverse{% endif %}{% if section.settings.tint_bg %} bg-ivory{% endif %}" data-animate>
+  <div class="split-section__media">
+    {%- if section.settings.image -%}
+      <img src="{{ section.settings.image | image_url: width: 1200 }}" srcset="{{ section.settings.image | image_url: width: 700 }} 700w, {{ section.settings.image | image_url: width: 1200 }} 1200w" alt="{{ section.settings.heading | escape }}" loading="lazy" width="1200" height="1500">
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag }}
+    {%- endif -%}
+  </div>
+  <div class="split-section__content">
+    {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+    <h2>{{ section.settings.heading }}</h2>
+    <div>{{ section.settings.text }}</div>
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="btn{% if section.settings.button_style == 'outline' %} btn--outline{% endif %}" style="margin-top: 12px;">{{ section.settings.button_label }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Split content",
+  "settings": [
+    { "type": "select", "id": "layout", "label": "Image position", "default": "image_left", "options": [
+      { "value": "image_left", "label": "Image left" },
+      { "value": "image_right", "label": "Image right" }
+    ]},
+    { "type": "checkbox", "id": "tint_bg", "label": "Ivory background", "default": false },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Story" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A Legacy of Elegance" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Karim Jewellers brings together considered design and quality craftsmanship, offering jewellery for everyday wear and life's most meaningful occasions. This is placeholder copy — replace with the brand's real story.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Discover Our Story" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "select", "id": "button_style", "label": "Button style", "default": "solid", "options": [
+      { "value": "solid", "label": "Solid" },
+      { "value": "outline", "label": "Outline" }
+    ]}
+  ],
+  "presets": [{ "name": "Split content" }]
+}
+{% endschema %}

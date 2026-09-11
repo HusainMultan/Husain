@@ -1,0 +1,18 @@
+{%- comment -%}
+  Params: eyebrow, heading, text (richtext), image, layout ('image_left'|'image_right'), tint (bool), button_label, button_link
+{%- endcomment -%}
+<section class="split-section{% if layout == 'image_right' %} reverse{% endif %}{% if tint %} bg-ivory{% endif %}" data-animate>
+  <div class="split-section__media">
+    {%- if image -%}
+      <img src="{{ image | image_url: width: 1200 }}" alt="{{ heading | escape }}" loading="lazy" width="1200" height="1500">
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag }}
+    {%- endif -%}
+  </div>
+  <div class="split-section__content">
+    {%- if eyebrow != blank -%}<span class="eyebrow">{{ eyebrow }}</span>{%- endif -%}
+    <h2>{{ heading }}</h2>
+    <div>{{ text }}</div>
+    {%- if button_label != blank -%}<a href="{{ button_link | default: '#' }}" class="btn" style="margin-top:12px;">{{ button_label }}</a>{%- endif -%}
+  </div>
+</section>

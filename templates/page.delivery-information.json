@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal-content",
+      "settings": {
+        "heading": "Delivery Information",
+        "show_notice": true,
+        "body": "<p>We aim to deliver every order quickly and securely across the UK.</p><h2>Standard UK Delivery — £3.95</h2><p>Estimated delivery: 3&ndash;5 working days.</p><h2>Free UK Delivery — Orders over £75</h2><p>Orders over £75 qualify automatically for free standard delivery.</p><h2>Order Tracking</h2><p>You will receive a shipping confirmation with tracking information once your order has been dispatched.</p><p><em>This is placeholder delivery information for development purposes. Replace with Karim Jewellers' confirmed delivery terms before launch.</em></p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

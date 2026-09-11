@@ -1,0 +1,47 @@
+<section class="section bg-ivory">
+  <div class="page-width">
+    <div class="trust-grid">
+      {%- for block in section.blocks -%}
+        <div class="trust-item" data-animate {{ block.shopify_attributes }}>
+          {% render 'icon', name: block.settings.icon %}
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust badges",
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "truck", "options": [
+          { "value": "truck", "label": "Delivery" },
+          { "value": "shield", "label": "Secure" },
+          { "value": "gift", "label": "Gift" },
+          { "value": "headset", "label": "Support" },
+          { "value": "diamond", "label": "Diamond" }
+        ]},
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust badges",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "truck", "title": "UK Delivery", "text": "Reliable delivery across the UK." } },
+        { "type": "badge", "settings": { "icon": "shield", "title": "Secure Checkout", "text": "Shop with confidence through secure Shopify checkout." } },
+        { "type": "badge", "settings": { "icon": "gift", "title": "Premium Presentation", "text": "Beautiful packaging for every special purchase." } },
+        { "type": "badge", "settings": { "icon": "headset", "title": "Customer Care", "text": "Dedicated assistance when you need it." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

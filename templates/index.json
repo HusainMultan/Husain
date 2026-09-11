@@ -1,0 +1,124 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Karim Jewellers",
+        "heading": "Timeless Elegance, Beautifully Crafted",
+        "subtext": "Discover jewellery designed to celebrate life's most memorable moments.",
+        "primary_label": "Shop Jewellery",
+        "primary_link": "/collections/all",
+        "secondary_label": "Explore Collections",
+        "secondary_link": "/collections"
+      }
+    },
+    "featured_collections": {
+      "type": "featured-collections",
+      "blocks": {
+        "rings": { "type": "collection", "settings": { "title": "Rings" } },
+        "earrings": { "type": "collection", "settings": { "title": "Earrings" } },
+        "necklaces": { "type": "collection", "settings": { "title": "Necklaces" } },
+        "bracelets": { "type": "collection", "settings": { "title": "Bracelets" } },
+        "wedding": { "type": "collection", "settings": { "title": "Wedding Jewellery" } },
+        "gifts": { "type": "collection", "settings": { "title": "Gifts" } }
+      },
+      "block_order": ["rings", "earrings", "necklaces", "bracelets", "wedding", "gifts"],
+      "settings": {
+        "eyebrow": "Shop by Category",
+        "heading": "Featured Collections",
+        "subtext": "Explore our most-loved jewellery, from everyday essentials to statement pieces."
+      }
+    },
+    "new_arrivals": {
+      "type": "featured-products",
+      "settings": {
+        "eyebrow": "New In",
+        "heading": "New Arrivals",
+        "subtext": "The latest additions to the Karim Jewellers collection.",
+        "collection": "new-arrivals",
+        "product_count": 4,
+        "show_view_all": true,
+        "view_all_label": "View All New Arrivals"
+      }
+    },
+    "brand_story": {
+      "type": "split-content",
+      "settings": {
+        "layout": "image_left",
+        "eyebrow": "Our Story",
+        "heading": "A Legacy of Elegance",
+        "text": "<p>Karim Jewellers brings together considered design and quality craftsmanship, offering jewellery for everyday wear and life's most meaningful occasions. This is placeholder copy, ready to be replaced with the brand's real story.</p>",
+        "button_label": "Discover Our Story",
+        "button_link": "/pages/about-us"
+      }
+    },
+    "best_sellers": {
+      "type": "featured-products",
+      "settings": {
+        "eyebrow": "Loved by Customers",
+        "heading": "Best Sellers",
+        "subtext": "",
+        "collection": "best-sellers",
+        "product_count": 4,
+        "show_view_all": true,
+        "view_all_label": "View All Best Sellers"
+      }
+    },
+    "editorial": {
+      "type": "split-content",
+      "settings": {
+        "layout": "image_right",
+        "tint_bg": true,
+        "eyebrow": "The Edit",
+        "heading": "Made for Your Most Meaningful Moments",
+        "text": "<p>From an everyday layering necklace to a piece marking a once-in-a-lifetime occasion, our jewellery is chosen to be worn and treasured.</p>",
+        "button_label": "Discover Our Collection",
+        "button_link": "/collections/all",
+        "button_style": "outline"
+      }
+    },
+    "trust": {
+      "type": "trust-badges",
+      "blocks": {
+        "delivery": { "type": "badge", "settings": { "icon": "truck", "title": "UK Delivery", "text": "Reliable delivery across the UK." } },
+        "secure": { "type": "badge", "settings": { "icon": "shield", "title": "Secure Checkout", "text": "Shop with confidence through secure Shopify checkout." } },
+        "gift": { "type": "badge", "settings": { "icon": "gift", "title": "Premium Presentation", "text": "Beautiful packaging for every special purchase." } },
+        "care": { "type": "badge", "settings": { "icon": "headset", "title": "Customer Care", "text": "Dedicated assistance when you need it." } }
+      },
+      "block_order": ["delivery", "secure", "gift", "care"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": { "type": "testimonial", "settings": { "quote": "Demo review text — a lovely piece, beautifully presented. This placeholder can be replaced with a genuine customer review.", "name": "Demo Customer" } },
+        "t2": { "type": "testimonial", "settings": { "quote": "Demo review text — excellent service and a beautiful finish. This placeholder can be replaced with a genuine customer review.", "name": "Demo Customer" } },
+        "t3": { "type": "testimonial", "settings": { "quote": "Demo review text — exactly what I was looking for. This placeholder can be replaced with a genuine customer review.", "name": "Demo Customer" } }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": { "heading": "What Our Customers Say" }
+    },
+    "visit_us": {
+      "type": "visit-us",
+      "settings": { "eyebrow": "Our Showrooms", "heading": "Visit Karim Jewellers" }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Stay Close to What Inspires You",
+        "subtext": "Sign up for new arrivals, jewellery inspiration and exclusive updates from Karim Jewellers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured_collections",
+    "new_arrivals",
+    "brand_story",
+    "best_sellers",
+    "editorial",
+    "trust",
+    "testimonials",
+    "visit_us",
+    "newsletter"
+  ]
+}

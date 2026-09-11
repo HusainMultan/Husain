@@ -1,0 +1,23 @@
+{%- comment -%}
+  Renders the Karim Jewellers logo, falling back to styled text if no image has been uploaded
+  in Theme Settings > Logo. Upload the supplied brand logo asset there.
+  Params: class (optional extra class), context ('header' | 'footer')
+{%- endcomment -%}
+{%- liquid
+  assign logo_class = class | default: ''
+-%}
+{%- if settings.logo -%}
+  <img
+    class="{{ logo_class }}"
+    src="{{ settings.logo | image_url: width: 400 }}"
+    srcset="{{ settings.logo | image_url: width: 200 }} 200w, {{ settings.logo | image_url: width: 400 }} 400w, {{ settings.logo | image_url: width: 600 }} 600w"
+    alt="{{ shop.name }}"
+    width="{{ settings.logo.width }}"
+    height="{{ settings.logo.height }}"
+    loading="eager"
+  >
+{%- else -%}
+  <span class="{{ logo_class }} site-header__logo-text{% if context == 'footer' %} footer-logo-text{% endif %}">
+    Karim <span style="font-family: var(--font-body); text-transform: uppercase; font-size: 0.5em; letter-spacing: 0.2em; display: block;">Jewellers</span>
+  </span>
+{%- endif -%}

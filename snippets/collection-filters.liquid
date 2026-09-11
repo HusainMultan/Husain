@@ -1,0 +1,38 @@
+{%- comment -%} Renders native Shopify storefront filters. Params: collection, paginate {%- endcomment -%}
+<form method="get">
+  {%- for filter in collection.filters -%}
+    <details class="filter-group" open>
+      <summary>{{ filter.label }} {% render 'icon', name: 'chevron-down' %}</summary>
+      <div>
+        {%- case filter.type -%}
+          {%- when 'list' -%}
+            {%- for value in filter.values -%}
+              <label class="filter-option">
+                <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %} onchange="this.form.submit()">
+                {{ value.label }} ({{ value.count }})
+              </label>
+            {%- endfor -%}
+          {%- when 'price_range' -%}
+            <div class="flex gap-8" style="margin-top: 8px;">
+              <input type="number" name="{{ filter.min_value.param_name }}" placeholder="£ Min" value="{{ filter.min_value.value }}" style="width: 90px; padding: 8px; border: 1px solid var(--color-border); border-radius: var(--radius);">
+              <input type="number" name="{{ filter.max_value.param_name }}" placeholder="£ Max" value="{{ filter.max_value.value }}" style="width: 90px; padding: 8px; border: 1px solid var(--color-border); border-radius: var(--radius);">
+            </div>
+            <button type="submit" class="btn btn--small btn--outline" style="margin-top: 10px;">Apply</button>
+          {%- when 'boolean' -%}
+            {%- for value in filter.values -%}
+              <label class="filter-option">
+                <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} onchange="this.form.submit()">
+                {{ filter.label }}
+              </label>
+            {%- endfor -%}
+        {%- endcase -%}
+      </div>
+    </details>
+  {%- endfor -%}
+
+  {%- assign has_active = false -%}
+  {%- for filter in collection.filters -%}{%- if filter.active_values.size > 0 -%}{%- assign has_active = true -%}{%- endif -%}{%- endfor -%}
+  {%- if has_active -%}
+    <a href="{{ collection.url }}" class="link-underline" style="display:inline-block; margin-top: 16px;">{{ 'collections.general.clear_all' | t }}</a>
+  {%- endif -%}
+</form>

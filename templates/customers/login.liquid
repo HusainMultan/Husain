@@ -1,0 +1,34 @@
+<div class="page-width section" style="max-width: 440px;">
+  <h1>{{ 'customer.login.title' | t }}</h1>
+  {% form 'customer_login' %}
+    {%- if form.errors -%}
+      <div class="form-success" style="border-color: var(--color-primary);">{{ form.errors | default_errors }}</div>
+    {%- endif -%}
+    <div class="form-field">
+      <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+      <input type="email" name="customer[email]" id="CustomerEmail" required>
+    </div>
+    {%- if form.password_needed -%}
+      <div class="form-field">
+        <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+        <input type="password" name="customer[password]" id="CustomerPassword" required>
+      </div>
+    {%- endif -%}
+    <button type="submit" class="btn btn--full">{{ 'customer.login.sign_in' | t }}</button>
+    <p style="margin-top: 16px; font-size: 0.85rem;">
+      <a href="#" onclick="document.getElementById('RecoverForm').hidden=false;this.parentElement.hidden=true;return false;">{{ 'customer.login.forgot_password' | t }}</a>
+    </p>
+  {% endform %}
+
+  {% form 'recover_customer_password', id: 'RecoverForm' %}
+    <div hidden id="RecoverForm">
+      <div class="form-field">
+        <label for="RecoverEmail">{{ 'customer.login.email' | t }}</label>
+        <input type="email" name="email" id="RecoverEmail" required>
+      </div>
+      <button type="submit" class="btn btn--outline btn--full">Reset Password</button>
+    </div>
+  {% endform %}
+
+  <p style="margin-top: 24px;">New to Karim Jewellers? <a href="{{ routes.account_register_url }}" class="link-underline">{{ 'customer.login.create_account' | t }}</a></p>
+</div>

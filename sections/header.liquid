@@ -1,0 +1,84 @@
+<header class="site-header">
+  <div class="page-width site-header__inner">
+    <button type="button" class="header-icon-btn mobile-menu-toggle" data-drawer-target="MobileMenu" aria-label="{{ 'header.menu' | t }}">
+      {% render 'icon', name: 'menu' %}
+    </button>
+
+    <a href="/" class="site-header__logo" style="--logo-width: {{ section.settings.logo_width | default: settings.logo_width }}px;">
+      {% render 'logo' %}
+    </a>
+
+    <nav aria-label="Main">
+      <ul class="site-header__nav">
+        {%- for link in section.settings.main_menu.links -%}
+          <li>
+            <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+            {%- if link.links.size > 0 -%}
+              {% render 'mega-menu', link: link %}
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <button type="button" class="header-icon-btn" data-drawer-target="SearchDrawer" aria-label="{{ 'header.search' | t }}">
+        {% render 'icon', name: 'search' %}
+      </button>
+      <a href="{{ routes.account_url }}" class="header-icon-btn hidden-mobile" aria-label="{{ 'header.account' | t }}">
+        {% render 'icon', name: 'account' %}
+      </a>
+      <a href="/pages/wishlist" class="header-icon-btn hidden-mobile" aria-label="{{ 'header.wishlist' | t }}">
+        {% render 'icon', name: 'heart' %}
+        <span class="header-icon-btn__count" data-wishlist-count hidden>0</span>
+      </a>
+      <button type="button" class="header-icon-btn" data-drawer-target="CartDrawer" aria-label="{{ 'header.cart' | t }}">
+        {% render 'icon', name: 'bag' %}
+        <span class="header-icon-btn__count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="MobileMenu" data-open="false">
+  <div class="mobile-menu__overlay" data-drawer-close></div>
+  <div class="mobile-menu__panel">
+    <div class="mobile-menu__header">
+      {% render 'logo' %}
+      <button type="button" class="btn btn--icon" data-drawer-close aria-label="Close">{% render 'icon', name: 'close' %}</button>
+    </div>
+    <nav aria-label="Mobile">
+      {%- for link in section.settings.main_menu.links -%}
+        {%- if link.links.size > 0 -%}
+          <details>
+            <summary>{{ link.title }} {% render 'icon', name: 'chevron-down' %}</summary>
+            <ul class="mobile-menu__sub">
+              <li><a href="{{ link.url }}">Shop all {{ link.title }}</a></li>
+              {%- for child in link.links -%}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </details>
+        {%- else -%}
+          <details>
+            <summary style="cursor: pointer;"><a href="{{ link.url }}" style="flex:1;">{{ link.title }}</a></summary>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+    <div style="margin-top: 24px; display: flex; gap: 16px;">
+      <a href="{{ routes.account_url }}" class="flex items-center gap-8">{% render 'icon', name: 'account' %} {{ 'header.account' | t }}</a>
+      <a href="/pages/wishlist" class="flex items-center gap-8">{% render 'icon', name: 'heart' %} {{ 'header.wishlist' | t }}</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "link_list", "id": "main_menu", "label": "Main menu", "default": "main-menu" },
+    { "type": "range", "id": "logo_width", "min": 80, "max": 260, "step": 5, "unit": "px", "label": "Logo width (overrides theme setting)", "default": 160 }
+  ]
+}
+{% endschema %}

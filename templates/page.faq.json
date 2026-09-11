@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-faq",
+      "blocks": {
+        "q1": { "type": "faq", "settings": { "question": "How long does UK delivery take?", "answer": "<p>Standard UK delivery typically takes 3&ndash;5 working days. Placeholder timing — confirm with final delivery policy.</p>" } },
+        "q2": { "type": "faq", "settings": { "question": "What is your returns policy?", "answer": "<p>We offer 30-day returns on unworn items in their original packaging. See our Returns &amp; Refunds page for full details.</p>" } },
+        "q3": { "type": "faq", "settings": { "question": "Do you offer ring resizing?", "answer": "<p>Please contact us to discuss resizing options for your purchase. Placeholder — to be confirmed.</p>" } },
+        "q4": { "type": "faq", "settings": { "question": "How should I care for my jewellery?", "answer": "<p>Store pieces separately in a soft pouch, and avoid contact with water, perfume and other chemicals.</p>" } },
+        "q5": { "type": "faq", "settings": { "question": "Can I visit a showroom in person?", "answer": "<p>Yes — we have a presence in both London and Birmingham. See our Visit Us section for details.</p>" } },
+        "q6": { "type": "faq", "settings": { "question": "Is checkout secure?", "answer": "<p>Yes. Checkout is handled securely through Shopify's native checkout system.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
+      "settings": { "heading": "Frequently Asked Questions" }
+    }
+  },
+  "order": ["main"]
+}

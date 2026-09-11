@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal-content",
+      "settings": {
+        "heading": "Terms & Conditions",
+        "show_notice": true,
+        "body": "<p>These Terms &amp; Conditions govern your use of the Karim Jewellers website and any purchases made through it.</p><h2>Orders & Payment</h2><p>Placeholder — order acceptance and payment terms to be added.</p><h2>Pricing</h2><p>Placeholder — pricing and currency (GBP) terms to be added.</p><h2>Liability</h2><p>Placeholder — liability terms to be added.</p><p><em>This placeholder content has not been legally reviewed. It must be replaced with proper Terms &amp; Conditions prepared for Karim Jewellers before this site goes live.</em></p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,36 @@
+<div class="drawer drawer--search" id="SearchDrawer" data-open="false" aria-hidden="true">
+  <div class="drawer__overlay" data-drawer-close></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
+    <div class="drawer__header">
+      <form action="/search" method="get" role="search" style="flex: 1; display: flex; align-items: center; gap: 12px;">
+        {% render 'icon', name: 'search' %}
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'general.search.placeholder' | t }}"
+          data-predictive-search-input
+          autocomplete="off"
+          style="flex:1; border: none; font-size: 1.1rem; background: none;"
+          aria-label="{{ 'general.search.search' | t }}"
+        >
+        <input type="hidden" name="type" value="product">
+      </form>
+      <button type="button" class="btn btn--icon" data-drawer-close aria-label="Close">{% render 'icon', name: 'close' %}</button>
+    </div>
+    <div class="drawer__body">
+      <div data-predictive-search-results></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .predictive-group { margin-bottom: 24px; }
+  .predictive-group h4 { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-light); margin-bottom: 12px; }
+  .predictive-products li { margin-bottom: 14px; }
+  .predictive-products a { display: flex; align-items: center; gap: 14px; }
+  .predictive-products img { border-radius: var(--radius); object-fit: cover; }
+  .predictive-product-title { display: block; font-size: 0.9rem; }
+  .predictive-product-price { display: block; font-size: 0.82rem; color: var(--color-text-light); }
+  .predictive-empty { color: var(--color-text-light); }
+</style>

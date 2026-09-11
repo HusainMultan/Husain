@@ -1,0 +1,12 @@
+<article class="page-width section rich-text-page">
+  <p style="color: var(--color-text-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em;">{{ article.published_at | date: "%d %B %Y" }}</p>
+  <h1>{{ article.title }}</h1>
+  {%- if article.image -%}
+    <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}" style="margin: 24px 0; border-radius: var(--radius);">
+  {%- endif -%}
+  <div>{{ article.content }}</div>
+</article>
+
+{% schema %}
+{ "name": "Main article", "settings": [] }
+{% endschema %}

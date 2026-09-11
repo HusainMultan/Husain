@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal-content",
+      "settings": {
+        "heading": "Returns & Refunds",
+        "show_notice": true,
+        "body": "<p>We want you to be delighted with your Karim Jewellers purchase.</p><h2>30-Day Returns</h2><p>Unworn items in their original packaging may be returned within 30 days of delivery for a full refund.</p><h2>How to Return an Item</h2><p>Please contact our customer care team via the Contact Us page to begin a return.</p><h2>Refunds</h2><p>Once your return is received and inspected, refunds are processed back to your original payment method.</p><p><em>This is placeholder returns information for development purposes. Replace with Karim Jewellers' confirmed returns policy before launch.</em></p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

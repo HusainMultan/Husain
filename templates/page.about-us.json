@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-about",
+      "blocks": {
+        "v1": { "type": "value", "settings": { "icon": "diamond", "title": "Quality", "text": "Carefully chosen jewellery for everyday wear and special occasions." } },
+        "v2": { "type": "value", "settings": { "icon": "shield", "title": "Trust", "text": "Transparent, straightforward service you can rely on." } },
+        "v3": { "type": "value", "settings": { "icon": "headset", "title": "Personal Service", "text": "Considered advice, whether you shop online or in person." } }
+      },
+      "block_order": ["v1", "v2", "v3"],
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

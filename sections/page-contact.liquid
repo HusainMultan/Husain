@@ -1,0 +1,66 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section-header" data-animate>
+      <span class="eyebrow">Get in Touch</span>
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.subtext }}</p>
+    </div>
+
+    <div class="collection-layout">
+      <div style="grid-column: span 1;">
+        {% form 'contact', id: 'ContactForm' %}
+          {%- if form.posted_successfully? -%}
+            <div class="form-success">{{ 'contact.form.success' | t }}</div>
+          {%- elsif form.errors -%}
+            <div class="form-success" style="border-color: var(--color-primary);">{{ 'contact.form.error' | t }}</div>
+          {%- endif -%}
+          <div class="form-field">
+            <label for="ContactName">{{ 'contact.form.name' | t }}</label>
+            <input type="text" name="contact[name]" id="ContactName" required>
+          </div>
+          <div class="form-field">
+            <label for="ContactEmail">{{ 'contact.form.email' | t }}</label>
+            <input type="email" name="contact[email]" id="ContactEmail" value="{{ form.email }}" required>
+          </div>
+          <div class="form-field">
+            <label for="ContactPhone">{{ 'contact.form.phone' | t }}</label>
+            <input type="tel" name="contact[phone]" id="ContactPhone">
+          </div>
+          <div class="form-field">
+            <label for="ContactMessage">{{ 'contact.form.message' | t }}</label>
+            <textarea name="contact[body]" id="ContactMessage" required>{{ form.body }}</textarea>
+          </div>
+          <button type="submit" class="btn">{{ 'contact.form.send' | t }}</button>
+        {% endform %}
+      </div>
+
+      <div style="grid-column: span 1;">
+        <div class="visit-card" style="margin-bottom: 24px;">
+          <h3>Email &amp; Telephone</h3>
+          <p style="color: var(--color-text-light);">Placeholder — to be replaced with the store's real contact details.</p>
+          <p>Email: <em>hello@karimjewellers.example</em><br>Telephone: <em>+44 (0)00 0000 0000</em></p>
+          <p style="font-size: 0.85rem; color: var(--color-text-light);">Customer service hours: Monday&ndash;Saturday, 10:00&ndash;18:00 (placeholder).</p>
+        </div>
+        <div class="visit-card" style="margin-bottom: 24px;">
+          <h3>{{ settings.london_label }}</h3>
+          <div>{{ settings.london_info }}</div>
+        </div>
+        <div class="visit-card">
+          <h3>{{ settings.birmingham_label }}</h3>
+          <div>{{ settings.birmingham_info }}</div>
+        </div>
+        <p style="margin-top: 24px;">Have a quick question? Visit our <a href="/pages/faq" class="link-underline">FAQ</a> page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact page",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Contact Us" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "We'd love to help with any question about our jewellery, an order, or a visit to our showrooms." }
+  ]
+}
+{% endschema %}

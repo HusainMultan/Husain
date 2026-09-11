@@ -1,0 +1,30 @@
+<div class="page-width section">
+  <div class="section-header" data-animate>
+    <span class="eyebrow">Shop</span>
+    <h1>All Jewellery</h1>
+    <p>Browse the full Karim Jewellers collection.</p>
+  </div>
+  <div class="grid grid--3">
+    {%- for collection in collections -%}
+      {%- unless collection.handle == 'frontpage' -%}
+        <a href="{{ collection.url }}" class="collection-card" data-animate>
+          <div class="collection-card__media">
+            {%- if collection.featured_image -%}
+              <img src="{{ collection.featured_image | image_url: width: 800 }}" alt="{{ collection.title | escape }}" loading="lazy">
+            {%- else -%}
+              {{ 'collection-1' | placeholder_svg_tag }}
+            {%- endif -%}
+          </div>
+          <div class="collection-card__body">
+            <h3>{{ collection.title }}</h3>
+            <span>View Collection</span>
+          </div>
+        </a>
+      {%- endunless -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{ "name": "All collections", "settings": [] }
+{% endschema %}

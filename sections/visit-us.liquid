@@ -1,0 +1,12 @@
+{% render 'visit-us-inline', eyebrow: section.settings.eyebrow, heading: section.settings.heading %}
+
+{% schema %}
+{
+  "name": "Visit us",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Showrooms" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Visit Karim Jewellers" }
+  ],
+  "presets": [{ "name": "Visit us" }]
+}
+{% endschema %}

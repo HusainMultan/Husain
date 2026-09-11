@@ -1,0 +1,33 @@
+{%- comment -%}
+  Renders a mega-menu panel for a top-level linklist item that has nested links.
+  Params: link (a link object from a linklist)
+{%- endcomment -%}
+{%- liquid
+  assign feature_collection = collections[link.title | handleize]
+-%}
+{%- if link.links.size > 0 -%}
+  <div class="mega-menu">
+    <div class="page-width mega-menu__grid">
+      {%- if link.links.size > 0 -%}
+        <div class="mega-menu__col">
+          <h4>{{ link.title }}</h4>
+          <ul>
+            {%- for child_link in link.links -%}
+              <li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+      <div class="mega-menu__col mega-menu__feature">
+        <a href="{{ link.url }}">
+          {%- if feature_collection.featured_image -%}
+            <img src="{{ feature_collection.featured_image | image_url: width: 400 }}" alt="" loading="lazy">
+          {%- else -%}
+            {{ 'collection-1' | placeholder_svg_tag }}
+          {%- endif -%}
+          <span class="link-underline">Shop {{ link.title }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal-content",
+      "settings": {
+        "heading": "Size Guide",
+        "show_notice": false,
+        "body": "<h2>Ring Sizing</h2><p>UK ring sizes range from A to Z+. If you're unsure of your size, we recommend visiting one of our showrooms for a fitting, or using a printable ring sizer.</p><h2>Bracelet Sizing</h2><p>Measure your wrist snugly with a soft tape measure and add 1&ndash;1.5cm for comfort.</p><h2>Necklace Lengths</h2><p>Our necklaces typically range from 40cm (choker) to 60cm (matinee length).</p><p><em>Placeholder sizing information for development purposes — to be confirmed with final product specifications.</em></p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

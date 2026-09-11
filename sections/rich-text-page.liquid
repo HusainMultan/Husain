@@ -1,0 +1,16 @@
+<div class="page-width section rich-text-page">
+  <h1>{{ page.title }}</h1>
+  {%- if section.settings.show_placeholder_notice -%}
+    <span class="demo-label">Placeholder content — to be replaced with the client's final, legally reviewed copy</span>
+  {%- endif -%}
+  <div>{{ page.content }}</div>
+</div>
+
+{% schema %}
+{
+  "name": "Page content",
+  "settings": [
+    { "type": "checkbox", "id": "show_placeholder_notice", "label": "Show placeholder notice", "default": false }
+  ]
+}
+{% endschema %}

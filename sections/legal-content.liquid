@@ -1,0 +1,18 @@
+<div class="page-width section rich-text-page">
+  <h1>{{ section.settings.heading }}</h1>
+  {%- if section.settings.show_notice -%}
+    <span class="demo-label">Placeholder content — to be replaced with the client's final, legally reviewed copy</span>
+  {%- endif -%}
+  <div>{{ section.settings.body }}</div>
+</div>
+
+{% schema %}
+{
+  "name": "Legal / info content",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "checkbox", "id": "show_notice", "label": "Show placeholder notice", "default": true },
+    { "type": "richtext", "id": "body", "label": "Body content" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,141 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you're looking for doesn't exist, or has moved. Explore our jewellery collections below.",
+      "link": "Continue shopping"
+    },
+    "search": {
+      "search": "Search",
+      "placeholder": "Search for jewellery, collections...",
+      "no_results": "No results found for \"{{ terms }}\". Try a different search term.",
+      "results_for": "Search results for \"{{ terms }}\"",
+      "products": "Products",
+      "collections": "Collections",
+      "view_all": "View all results"
+    },
+    "newsletter": {
+      "heading": "Stay Close to What Inspires You",
+      "subtext": "Sign up for new arrivals, jewellery inspiration and exclusive updates from Karim Jewellers.",
+      "placeholder": "Enter your email address",
+      "button": "Subscribe",
+      "success": "Thank you for subscribing.",
+      "error": "Please enter a valid email address."
+    },
+    "continue_shopping": "Continue shopping"
+  },
+  "header": {
+    "menu": "Menu",
+    "search": "Search",
+    "account": "Account",
+    "wishlist": "Wishlist",
+    "cart": "Basket",
+    "announcement_default": "Complimentary UK Delivery on Orders Over £75"
+  },
+  "products": {
+    "product": {
+      "add_to_basket": "Add to Basket",
+      "buy_it_now": "Buy It Now",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "in_stock": "In stock, ready to ship",
+      "low_stock": "Only {{ count }} left in stock",
+      "quantity": "Quantity",
+      "description": "Description",
+      "details": "Details & Materials",
+      "size_fit": "Size & Fit",
+      "care": "Care Instructions",
+      "delivery": "Delivery",
+      "returns": "Returns",
+      "sku": "SKU",
+      "vendor": "Vendor",
+      "reviews": "Reviews",
+      "no_reviews": "Be the first to review this piece.",
+      "delivery_info": "Standard UK Delivery — £3.95. Free UK Delivery on orders over £75.",
+      "returns_info": "30-day returns on unworn items in original packaging. See our Returns & Refunds policy for full details.",
+      "secure_checkout": "Secure checkout powered by Shopify",
+      "wishlist_add": "Add to Wishlist",
+      "wishlist_remove": "Remove from Wishlist",
+      "view_full_details": "View full details",
+      "quick_view": "Quick View"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_products": "No products found in this collection.",
+      "items_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      },
+      "filter": "Filter",
+      "sort": "Sort by",
+      "clear_all": "Clear all",
+      "load_more": "Load More"
+    },
+    "sorting": {
+      "featured": "Featured",
+      "best_selling": "Best selling",
+      "az": "Alphabetically, A-Z",
+      "za": "Alphabetically, Z-A",
+      "price_ascending": "Price, low to high",
+      "price_descending": "Price, high to low",
+      "date_descending": "Newest first",
+      "date_ascending": "Oldest first"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Basket",
+      "empty": "Your basket is currently empty.",
+      "continue_shopping": "Continue Shopping",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "remove": "Remove",
+      "quantity": "Quantity",
+      "free_shipping_met": "You've qualified for free UK delivery.",
+      "free_shipping_remaining": "Spend {{ amount }} more for free UK delivery.",
+      "view_cart": "View Basket",
+      "update": "Update"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "My Account",
+      "details": "Account Details",
+      "orders": "Order History",
+      "logged_in_as": "Logged in as {{ email }}",
+      "log_out": "Log Out"
+    },
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "sign_in": "Sign In",
+      "forgot_password": "Forgot your password?",
+      "create_account": "Create Account"
+    },
+    "register": {
+      "title": "Create Account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Telephone (optional)",
+      "message": "Message",
+      "send": "Send Enquiry",
+      "success": "Thank you — your enquiry has been received. A member of the Karim Jewellers team will be in touch shortly.",
+      "error": "There was a problem sending your message. Please try again."
+    }
+  }
+}

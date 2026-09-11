@@ -1,0 +1,47 @@
+<div class="page-width section">
+  <div class="section-header align-left" data-animate>
+    <span class="eyebrow">Saved for Later</span>
+    <h1>{{ section.settings.heading }}</h1>
+  </div>
+  <div id="WishlistEmpty" hidden>
+    <p>You haven't added anything to your wishlist yet.</p>
+    <a href="/collections/all" class="btn btn--outline">Explore Jewellery</a>
+  </div>
+  <div class="grid grid--4" id="WishlistGrid"></div>
+</div>
+
+<script>
+  (function () {
+    var WISHLIST_KEY = "karim-jewellers-wishlist";
+    var grid = document.getElementById("WishlistGrid");
+    var emptyState = document.getElementById("WishlistEmpty");
+    var handles = [];
+    try { handles = JSON.parse(localStorage.getItem(WISHLIST_KEY) || "[]"); } catch (e) {}
+    if (!handles.length) { emptyState.hidden = false; return; }
+    handles.forEach(function (handle) {
+      fetch("/products/" + handle + ".js")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (product) {
+          if (!product) return;
+          var img = product.featured_image || (product.images && product.images[0]);
+          var card = document.createElement("div");
+          card.className = "product-card";
+          card.innerHTML =
+            '<div class="product-card__media"><a href="/products/' + product.handle + '">' +
+            (img ? '<img src="' + img + '&width=700" alt="' + product.title.replace(/"/g, "&quot;") + '" loading="lazy">' : "") +
+            '</a></div><div class="product-card__info"><h3 class="product-card__title"><a href="/products/' + product.handle + '">' + product.title + '</a></h3>' +
+            '<span class="product-card__price">' + (product.price / 100).toLocaleString("en-GB", { style: "currency", currency: "{{ cart.currency.iso_code | default: shop.currency }}" }) + '</span></div>';
+          grid.appendChild(card);
+        });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Wishlist page",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your Wishlist" }
+  ]
+}
+{% endschema %}

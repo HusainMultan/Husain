@@ -1,0 +1,89 @@
+<footer class="site-footer">
+  <div class="page-width">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-logo" style="display:inline-block; margin-bottom: 16px;">{% render 'logo', class: 'footer-logo', context: 'footer' %}</a>
+        <p style="color: rgba(255,255,255,0.75); max-width: 32ch;">{{ section.settings.footer_text | default: "Timeless jewellery, thoughtfully chosen. Visit us in London and Birmingham." }}</p>
+        <div class="footer-locations">
+          <strong style="color:#fff;">{{ settings.london_label }}</strong> &middot; <strong style="color:#fff;">{{ settings.birmingham_label }}</strong>
+        </div>
+      </div>
+
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="{{ section.settings.new_arrivals_url | default: '/collections/new-arrivals' }}">New Arrivals</a></li>
+          <li><a href="/collections/rings">Rings</a></li>
+          <li><a href="/collections/earrings">Earrings</a></li>
+          <li><a href="/collections/necklaces">Necklaces</a></li>
+          <li><a href="/collections/bracelets">Bracelets</a></li>
+          <li><a href="/collections/best-sellers">Best Sellers</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="/pages/contact">Contact Us</a></li>
+          <li><a href="/pages/delivery-information">Delivery</a></li>
+          <li><a href="/pages/returns-refunds">Returns</a></li>
+          <li><a href="/pages/faq">FAQ</a></li>
+          <li><a href="/pages/size-guide">Size Guide</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/pages/about-us">About Karim Jewellers</a></li>
+          <li><a href="/pages/about-us">Our Story</a></li>
+          <li><a href="/pages/contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/pages/cookie-policy">Cookie Policy</a></li>
+          <li><a href="/pages/terms-conditions">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="max-width: 420px; margin: 40px auto 0; text-align: center;">
+      <h4 style="text-align:center;">Newsletter</h4>
+      {% form 'customer', id: 'FooterNewsletterForm' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div style="display:flex; gap:8px;">
+          <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter.placeholder' | t }}" required aria-label="Email" style="flex:1; padding:12px 14px; border-radius: var(--radius); border:1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); color:#fff;">
+          <button type="submit" class="btn btn--on-dark">{{ 'general.newsletter.button' | t }}</button>
+        </div>
+        {%- if form.posted_successfully? -%}<p style="margin-top:10px;">{{ 'general.newsletter.success' | t }}</p>{%- endif -%}
+      {% endform %}
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+      <div class="footer-social">
+        {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" aria-label="Instagram">Instagram</a>{%- endif -%}
+        {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" aria-label="Facebook">Facebook</a>{%- endif -%}
+        {%- if settings.social_pinterest != blank -%}<a href="{{ settings.social_pinterest }}" aria-label="Pinterest">Pinterest</a>{%- endif -%}
+        {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" aria-label="TikTok">TikTok</a>{%- endif -%}
+      </div>
+      <div class="footer-payments" aria-label="Accepted payment methods">
+        <span>Visa</span> &middot; <span>Mastercard</span> &middot; <span>Shop Pay</span> &middot; <span>PayPal</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "richtext", "id": "footer_text", "label": "Footer intro text" },
+    { "type": "url", "id": "new_arrivals_url", "label": "New arrivals link" }
+  ]
+}
+{% endschema %}

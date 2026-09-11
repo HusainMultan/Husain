@@ -1,0 +1,28 @@
+<div class="page-width section">
+  <div class="flex items-center" style="justify-content: space-between; margin-bottom: 24px;">
+    <h1 class="mt-0">{{ 'customer.account.title' | t }}</h1>
+    <a href="{{ routes.account_logout_url }}" class="link-underline">{{ 'customer.account.log_out' | t }}</a>
+  </div>
+  <p>{{ 'customer.account.logged_in_as' | t: email: customer.email }}</p>
+
+  <h2 style="margin-top: 40px;">{{ 'customer.account.orders' | t }}</h2>
+  {%- if customer.orders.size == 0 -%}
+    <p>You haven't placed any orders yet.</p>
+    <a href="/collections/all" class="btn btn--outline">Continue Shopping</a>
+  {%- else -%}
+    <table style="width:100%; border-collapse: collapse;">
+      <thead><tr style="text-align:left; border-bottom: 1px solid var(--color-border);"><th style="padding:10px 0;">Order</th><th>Date</th><th>Payment</th><th>Fulfillment</th><th>Total</th></tr></thead>
+      <tbody>
+        {%- for order in customer.orders -%}
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding:10px 0;"><a href="{{ order.customer_url }}">{{ order.name }}</a></td>
+            <td>{{ order.created_at | date: "%d %b %Y" }}</td>
+            <td>{{ order.financial_status_label }}</td>
+            <td>{{ order.fulfillment_status_label }}</td>
+            <td>{{ order.total_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+  {%- endif -%}
+</div>

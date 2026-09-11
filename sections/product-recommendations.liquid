@@ -1,0 +1,40 @@
+<section class="section product-recs page-width" data-product-recommendations data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.count }}" id="ProductRecommendations-{{ section.id }}">
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <div class="section-header align-left">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div class="grid grid--4">
+      {%- for product in recommendations.products -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+
+<script>
+  (function () {
+    var el = document.currentScript.closest('[data-product-recommendations]');
+    if (!el) return;
+    var url = el.getAttribute('data-url');
+    fetch(url)
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var newSection = doc.querySelector('[data-product-recommendations]');
+        if (newSection && newSection.innerHTML.trim() !== '') {
+          el.innerHTML = newSection.innerHTML;
+        }
+      })
+      .catch(function () {});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product recommendations",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "You May Also Like" },
+    { "type": "range", "id": "count", "min": 4, "max": 8, "step": 4, "label": "Products to show", "default": 4 }
+  ]
+}
+{% endschema %}

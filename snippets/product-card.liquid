@@ -1,0 +1,57 @@
+{%- comment -%}
+  Premium product card. Params: product, image_ratio (default 4/5)
+{%- endcomment -%}
+<div class="product-card" data-animate>
+  <div class="product-card__media">
+    <a href="{{ product.url }}" aria-label="{{ product.title }}">
+      {%- if product.featured_media -%}
+        <img
+          src="{{ product.featured_media | image_url: width: 700 }}"
+          srcset="{{ product.featured_media | image_url: width: 400 }} 400w, {{ product.featured_media | image_url: width: 700 }} 700w, {{ product.featured_media | image_url: width: 1000 }} 1000w"
+          sizes="(min-width: 990px) 25vw, 50vw"
+          alt="{{ product.featured_media.alt | default: product.title | escape }}"
+          loading="lazy"
+          width="700" height="875"
+        >
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag }}
+      {%- endif -%}
+      {%- if product.media[1] -%}
+        <img
+          class="product-card__img--back"
+          src="{{ product.media[1] | image_url: width: 700 }}"
+          alt=""
+          loading="lazy"
+          width="700" height="875"
+        >
+      {%- endif -%}
+    </a>
+
+    {%- if product.compare_at_price > product.price -%}
+      <span class="product-card__badge">Sale</span>
+    {%- elsif product.tags contains 'new' -%}
+      <span class="product-card__badge">New</span>
+    {%- endif -%}
+
+    <button type="button" class="product-card__wishlist" data-wishlist-toggle="{{ product.handle }}" aria-label="Add to Wishlist">
+      {% render 'icon', name: 'heart' %}
+    </button>
+
+    <div class="product-card__quickadd">
+      {%- if product.has_only_default_variant and product.available -%}
+        <form data-product-form action="/cart/add" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <input type="hidden" name="quantity" value="1">
+          <button type="submit" class="btn btn--small btn--full">Add to Basket</button>
+        </form>
+      {%- else -%}
+        <a href="{{ product.url }}" class="btn btn--small btn--full">{{ 'products.product.view_full_details' | t }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="product-card__info">
+    <h3 class="product-card__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    {% render 'price', product: product, price_class: ' product-card__price' %}
+  </div>
+</div>

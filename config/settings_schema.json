@@ -1,0 +1,133 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Karim Jewellers",
+    "theme_version": "1.0.0",
+    "theme_author": "Karim Jewellers",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image",
+        "info": "Recommended: transparent PNG/SVG of the Karim Jewellers logo. Upload the supplied brand asset here."
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 80,
+        "max": 260,
+        "step": 5,
+        "unit": "px",
+        "label": "Desktop logo width",
+        "default": 160
+      },
+      {
+        "type": "range",
+        "id": "logo_width_mobile",
+        "min": 60,
+        "max": 180,
+        "step": 5,
+        "unit": "px",
+        "label": "Mobile logo width",
+        "default": 120
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "Colours",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand palette"
+      },
+      { "type": "color", "id": "color_primary", "label": "Primary brand colour (burgundy)", "default": "#5C0E1B" },
+      { "type": "color", "id": "color_primary_dark", "label": "Primary dark (hover)", "default": "#450A14" },
+      { "type": "color", "id": "color_secondary", "label": "Secondary accent (gold)", "default": "#B08D57" },
+      { "type": "color", "id": "color_background", "label": "Page background", "default": "#FBF8F5" },
+      { "type": "color", "id": "color_surface", "label": "Card / surface background", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_ivory", "label": "Ivory section background", "default": "#F4EDE6" },
+      { "type": "color", "id": "color_text", "label": "Body text", "default": "#241B1D" },
+      { "type": "color", "id": "color_text_light", "label": "Muted text", "default": "#6E6265" },
+      { "type": "color", "id": "color_border", "label": "Borders", "default": "#E4DAD2" },
+      { "type": "color", "id": "color_button_text", "label": "Button text", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_success", "label": "Success / in stock", "default": "#3F6C51" },
+      { "type": "color", "id": "color_sale", "label": "Sale price", "default": "#5C0E1B" }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      { "type": "header", "content": "Headings" },
+      { "type": "font_picker", "id": "font_heading", "label": "Heading font", "default": "playfair_display_n4" },
+      { "type": "header", "content": "Body" },
+      { "type": "font_picker", "id": "font_body", "label": "Body font", "default": "jost_n4" }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      { "type": "range", "id": "page_width", "min": 1200, "max": 1600, "step": 20, "unit": "px", "label": "Page width", "default": 1440 },
+      { "type": "range", "id": "spacing_sections", "min": 24, "max": 120, "step": 4, "unit": "px", "label": "Space between sections", "default": 80 },
+      { "type": "range", "id": "corner_radius", "min": 0, "max": 12, "step": 1, "unit": "px", "label": "Corner radius (cards/buttons)", "default": 2 }
+    ]
+  },
+  {
+    "name": "Buttons",
+    "settings": [
+      { "type": "select", "id": "button_style", "label": "Primary button style", "default": "solid", "options": [
+        { "value": "solid", "label": "Solid" },
+        { "value": "outline", "label": "Outline" }
+      ]}
+    ]
+  },
+  {
+    "name": "Animations",
+    "settings": [
+      { "type": "checkbox", "id": "enable_animations", "label": "Enable subtle scroll/hover animations", "default": true, "info": "Automatically disabled for visitors who prefer reduced motion." }
+    ]
+  },
+  {
+    "name": "Store locations",
+    "settings": [
+      { "type": "header", "content": "London" },
+      { "type": "text", "id": "london_label", "label": "Title", "default": "London" },
+      { "type": "richtext", "id": "london_info", "label": "Details", "default": "<p>Address to be confirmed. Placeholder text — replace with the store's real London details.</p>" },
+      { "type": "header", "content": "Birmingham" },
+      { "type": "text", "id": "birmingham_label", "label": "Title", "default": "Birmingham" },
+      { "type": "richtext", "id": "birmingham_info", "label": "Details", "default": "<p>Address to be confirmed. Placeholder text — replace with the store's real Birmingham details.</p>" }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram URL" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook URL" },
+      { "type": "text", "id": "social_pinterest", "label": "Pinterest URL" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok URL" }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      { "type": "text", "id": "free_shipping_threshold", "label": "Free UK delivery threshold (£)", "default": "75" },
+      { "type": "checkbox", "id": "cart_type_drawer", "label": "Use cart drawer (Ajax)", "default": true }
+    ]
+  },
+  {
+    "name": "Checkout",
+    "settings": [
+      { "type": "header", "content": "These settings only apply if Shopify's checkout supports branding controls for your plan." }
+    ]
+  }
+]

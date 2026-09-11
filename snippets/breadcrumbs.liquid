@@ -1,0 +1,15 @@
+<nav class="breadcrumbs page-width" aria-label="Breadcrumb">
+  <a href="/">Home</a>
+  {%- if template contains 'collection' and collection -%}
+    <span aria-hidden="true"> / </span><a href="/collections">Jewellery</a>
+    <span aria-hidden="true"> / </span><span aria-current="page">{{ collection.title }}</span>
+  {%- elsif template contains 'product' and product -%}
+    <span aria-hidden="true"> / </span><a href="/collections/all">Jewellery</a>
+    {%- if collection -%}
+      <span aria-hidden="true"> / </span><a href="{{ collection.url }}">{{ collection.title }}</a>
+    {%- endif -%}
+    <span aria-hidden="true"> / </span><span aria-current="page">{{ product.title }}</span>
+  {%- elsif page -%}
+    <span aria-hidden="true"> / </span><span aria-current="page">{{ page.title }}</span>
+  {%- endif -%}
+</nav>

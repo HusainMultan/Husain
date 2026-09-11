@@ -1,0 +1,192 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+{%- capture variants_json -%}
+[
+  {%- for variant in product.variants -%}
+    {
+      "id": {{ variant.id | json }},
+      "available": {{ variant.available | json }},
+      "price": {{ variant.price | json }},
+      "price_formatted": {{ variant.price | money | json }},
+      "url": {{ variant.url | json }},
+      "options": {{ variant.options | json }}
+    }{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+]
+{%- endcapture -%}
+
+{% render 'breadcrumbs' %}
+
+<section class="page-width">
+  <div class="product-main">
+    <div class="product-gallery" data-product-gallery>
+      <div class="product-gallery__main">
+        {%- if product.featured_media -%}
+          <img data-gallery-main-img src="{{ product.featured_media | image_url: width: 1200 }}" alt="{{ product.featured_media.alt | default: product.title | escape }}" width="1200" height="1200" id="MainProductImage">
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+
+      <div class="product-gallery__mobile">
+        {%- for media in product.media -%}
+          <img src="{{ media | image_url: width: 900 }}" alt="{{ media.alt | default: product.title | escape }}" loading="lazy">
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag }}
+        {%- endfor -%}
+      </div>
+
+      {%- if product.media.size > 1 -%}
+        <div class="product-gallery__thumbs">
+          {%- for media in product.media -%}
+            <button type="button" data-gallery-thumb data-full="{{ media | image_url: width: 1200 }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="View image {{ forloop.index }}">
+              <img src="{{ media | image_url: width: 200 }}" alt="" loading="lazy" width="120" height="120">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="product-info">
+      {%- if product.vendor != blank -%}<p class="product-info__vendor">{{ product.vendor }}</p>{%- endif -%}
+      <h1>{{ product.title }}</h1>
+
+      <div class="product-info__reviews">
+        {%- for i in (1..5) -%}{% render 'icon', name: 'star' %}{%- endfor -%}
+        <span style="color: var(--color-text-light);">{{ 'products.product.no_reviews' | t }}</span>
+      </div>
+
+      <div class="product-info__price" data-variant-price>
+        {% render 'price', product: product, variant: current_variant %}
+      </div>
+
+      <p class="product-info__stock{% unless current_variant.available %} is-out{% endunless %}" data-variant-stock
+        data-label-instock="{{ 'products.product.in_stock' | t }}"
+        data-label-outstock="{{ 'products.product.sold_out' | t }}">
+        {%- if current_variant.available -%}{{ 'products.product.in_stock' | t }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}
+      </p>
+
+      {%- if product.description != blank -%}
+        <div class="product-info__description">{{ product.description | strip_html | truncatewords: 40 }}</div>
+      {%- endif -%}
+
+      <form data-product-form data-variant-selector data-variants="{{ variants_json | escape }}" action="/cart/add" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <div class="variant-picker">
+              <div class="variant-picker__label"><span>{{ option.name }}</span></div>
+              <div class="variant-swatches">
+                {%- for value in option.values -%}
+                  {%- assign option_index = forloop.parentloop.index -%}
+                  <input
+                    type="radio"
+                    id="OptionValue-{{ option.position }}-{{ forloop.index }}"
+                    name="option{{ option.position }}"
+                    value="{{ value | escape }}"
+                    {% if option.selected_value == value %}checked{% endif %}
+                  >
+                  <label for="OptionValue-{{ option.position }}-{{ forloop.index }}">{{ value }}</label>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- endunless -%}
+
+        <div class="product-form__row">
+          <div class="qty-selector" data-qty-selector>
+            <button type="button" data-step="down" aria-label="{{ 'products.product.quantity' | t }} minus">{% render 'icon', name: 'minus' %}</button>
+            <input type="number" name="quantity" value="1" min="1" aria-label="{{ 'products.product.quantity' | t }}">
+            <button type="button" data-step="up" aria-label="{{ 'products.product.quantity' | t }} plus">{% render 'icon', name: 'plus' %}</button>
+          </div>
+        </div>
+
+        <div class="product-form__buttons">
+          <button
+            type="submit"
+            class="btn btn--full"
+            data-add-to-basket
+            data-label-available="{{ 'products.product.add_to_basket' | t }}"
+            data-label-unavailable="{{ 'products.product.sold_out' | t }}"
+            {% unless current_variant.available %}disabled{% endunless %}
+          >
+            {%- if current_variant.available -%}{{ 'products.product.add_to_basket' | t }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}
+          </button>
+          {%- if current_variant.available -%}
+            <a href="/cart/add?id={{ current_variant.id }}&quantity=1&checkout" class="btn btn--outline btn--full" data-buy-now>{{ 'products.product.buy_it_now' | t }}</a>
+          {%- endif -%}
+          <p data-form-error hidden style="color: var(--color-primary); font-size: 0.85rem;"></p>
+        </div>
+      </form>
+
+      <ul class="trust-mini">
+        <li>{% render 'icon', name: 'truck' %} {{ 'products.product.delivery_info' | t }}</li>
+        <li>{% render 'icon', name: 'shield' %} {{ 'products.product.secure_checkout' | t }}</li>
+        <li>{% render 'icon', name: 'gift' %} Presented in Karim Jewellers packaging</li>
+      </ul>
+
+      <div class="accordion">
+        <details {% if product.description != blank %}open{% endif %}>
+          <summary>{{ 'products.product.description' | t }}</summary>
+          <div class="accordion__content">{{ product.description }}</div>
+        </details>
+        <details>
+          <summary>{{ 'products.product.details' | t }}</summary>
+          <div class="accordion__content">
+            <p><strong>Material:</strong> {{ product.metafields.custom.material | default: "See product description" }}</p>
+            <p><strong>Stone:</strong> {{ product.metafields.custom.stone | default: "See product description" }}</p>
+            <p><strong>SKU:</strong> {{ current_variant.sku | default: "N/A" }}</p>
+          </div>
+        </details>
+        <details>
+          <summary>{{ 'products.product.size_fit' | t }}</summary>
+          <div class="accordion__content">{{ product.metafields.custom.size_fit | default: "Please refer to our size guide for detailed measurements." }}</div>
+        </details>
+        <details>
+          <summary>{{ 'products.product.care' | t }}</summary>
+          <div class="accordion__content">{{ product.metafields.custom.care_instructions | default: "Store separately in a soft pouch. Avoid contact with perfume, water and chemicals." }}</div>
+        </details>
+        <details>
+          <summary>{{ 'products.product.delivery' | t }}</summary>
+          <div class="accordion__content">{{ 'products.product.delivery_info' | t }}</div>
+        </details>
+        <details>
+          <summary>{{ 'products.product.returns' | t }}</summary>
+          <div class="accordion__content">{{ 'products.product.returns_info' | t }}</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="MobileStickyATCContent" hidden>
+  <div class="mobile-sticky-atc__info">
+    <div style="font-size: 0.85rem;">{{ product.title | truncate: 28 }}</div>
+    <div class="mobile-sticky-atc__price">{% render 'price', product: product, variant: current_variant %}</div>
+  </div>
+  <button type="button" class="btn" data-mobile-atc-trigger>{{ 'products.product.add_to_basket' | t }}</button>
+</div>
+
+<script>
+  (function(){
+    var src = document.getElementById('MobileStickyATCContent');
+    var target = document.getElementById('MobileStickyATC');
+    if (src && target) { target.innerHTML = src.innerHTML; }
+    var trigger = document.querySelector('[data-mobile-atc-trigger]');
+    if (trigger) {
+      trigger.addEventListener('click', function () {
+        var form = document.querySelector('[data-product-form]');
+        if (form) form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', {cancelable:true}));
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Main product",
+  "settings": []
+}
+{% endschema %}
