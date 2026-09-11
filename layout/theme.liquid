@@ -21,8 +21,10 @@
   {{ content_for_header }}
 
   <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-  {{ settings.font_heading | font_face: font_display: 'swap' }}
-  {{ settings.font_body | font_face: font_display: 'swap' }}
+  <style>
+    {{ settings.font_heading | font_face: font_display: 'swap' }}
+    {{ settings.font_body | font_face: font_display: 'swap' }}
+  </style>
 
   {{ 'base.css' | asset_url | stylesheet_tag }}
 
