@@ -1,0 +1,75 @@
+<section class="section{% if section.settings.tight_spacing %} promo-tiles-section--tight{% endif %}">
+  <div class="{% unless section.settings.full_width %}page-width{% endunless %}">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-header" data-animate>
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+    <div class="promo-tiles" data-columns="{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.link | default: '#' }}" class="promo-tile{% unless section.settings.show_overlay %} no-overlay{% endunless %}" data-animate {{ block.shopify_attributes }}>
+          {%- if block.settings.image -%}
+            <img src="{{ block.settings.image | image_url: width: 800 }}" srcset="{{ block.settings.image | image_url: width: 500 }} 500w, {{ block.settings.image | image_url: width: 800 }} 800w" alt="{{ block.settings.heading | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+          {%- else -%}
+            {% render 'jewellery-placeholder', type: block.settings.placeholder_type %}
+          {%- endif -%}
+          <div class="promo-tile__overlay">
+            {%- if block.settings.heading != blank -%}<h3>{{ block.settings.heading }}</h3>{%- endif -%}
+            {%- if section.settings.show_overlay and block.settings.button_label != blank -%}
+              <span class="btn btn--small btn--on-dark">{{ block.settings.button_label }}</span>
+            {%- endif -%}
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Promo tiles",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "select", "id": "columns", "label": "Columns", "default": "3", "options": [
+      { "value": "2", "label": "2" },
+      { "value": "3", "label": "3" },
+      { "value": "4", "label": "4" }
+    ]},
+    { "type": "checkbox", "id": "show_overlay", "label": "Show dark overlay and button on tiles", "default": true },
+    { "type": "checkbox", "id": "full_width", "label": "Full width (edge to edge)", "default": false },
+    { "type": "checkbox", "id": "tight_spacing", "label": "Reduce spacing above/below", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "select", "id": "placeholder_type", "label": "Placeholder style", "default": "gem", "options": [
+          { "value": "ring", "label": "Ring" },
+          { "value": "necklace", "label": "Necklace" },
+          { "value": "earrings", "label": "Earrings" },
+          { "value": "bracelet", "label": "Bracelet" },
+          { "value": "gem", "label": "Gem" },
+          { "value": "gift", "label": "Gift" }
+        ]},
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Collection" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "View Details" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo tiles",
+      "blocks": [
+        { "type": "tile", "settings": { "heading": "Just Launched", "placeholder_type": "ring" } },
+        { "type": "tile", "settings": { "heading": "Best Summer Sale", "placeholder_type": "bracelet" } },
+        { "type": "tile", "settings": { "heading": "Necklaces", "placeholder_type": "necklace" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

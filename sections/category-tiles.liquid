@@ -1,0 +1,60 @@
+<section class="section">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-header" data-animate>
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+    <div class="grid grid--4">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.link | default: '#' }}" class="category-tile" data-animate {{ block.shopify_attributes }}>
+          {%- if block.settings.image -%}
+            <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.label | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+          {%- else -%}
+            {% render 'jewellery-placeholder', type: block.settings.placeholder_type %}
+          {%- endif -%}
+          <div class="category-tile__label"><span>{{ block.settings.label }}</span></div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category tiles",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "select", "id": "placeholder_type", "label": "Placeholder style", "default": "gem", "options": [
+          { "value": "ring", "label": "Ring" },
+          { "value": "necklace", "label": "Necklace" },
+          { "value": "earrings", "label": "Earrings" },
+          { "value": "bracelet", "label": "Bracelet" },
+          { "value": "gem", "label": "Gem" },
+          { "value": "gift", "label": "Gift" }
+        ]},
+        { "type": "text", "id": "label", "label": "Label", "default": "Category" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category tiles",
+      "blocks": [
+        { "type": "tile", "settings": { "label": "Pearls", "placeholder_type": "necklace" } },
+        { "type": "tile", "settings": { "label": "Necklaces", "placeholder_type": "necklace" } },
+        { "type": "tile", "settings": { "label": "Bangle Set", "placeholder_type": "bracelet" } },
+        { "type": "tile", "settings": { "label": "Locket Designs", "placeholder_type": "gem" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

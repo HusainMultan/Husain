@@ -9,45 +9,76 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "hero",
-      "settings": {
-        "eyebrow": "Karun Jewellers",
-        "heading": "Timeless Elegance, Beautifully Crafted",
-        "subtext": "Discover jewellery designed to celebrate life's most memorable moments.",
-        "primary_label": "Shop Jewellery",
-        "primary_link": "/collections/all",
-        "secondary_label": "Explore Collections",
-        "secondary_link": "/collections"
-      }
-    },
-    "featured_collections": {
-      "type": "featured-collections",
+    "hero_slider": {
+      "type": "hero-slider",
       "blocks": {
-        "rings": { "type": "collection", "settings": { "title": "Rings" } },
-        "earrings": { "type": "collection", "settings": { "title": "Earrings" } },
-        "necklaces": { "type": "collection", "settings": { "title": "Necklaces" } },
-        "bracelets": { "type": "collection", "settings": { "title": "Bracelets" } },
-        "wedding": { "type": "collection", "settings": { "title": "Wedding Jewellery" } },
-        "gifts": { "type": "collection", "settings": { "title": "Gifts" } }
+        "slide1": {
+          "type": "slide",
+          "settings": {
+            "placeholder_type": "necklace",
+            "eyebrow": "Karun Jewellers",
+            "heading": "Timeless Elegance, Beautifully Crafted",
+            "subtext": "Discover jewellery designed to celebrate life's most memorable moments.",
+            "primary_label": "Shop Jewellery",
+            "primary_link": "/collections/all",
+            "secondary_label": "Explore Collections",
+            "secondary_link": "/collections"
+          }
+        },
+        "slide2": {
+          "type": "slide",
+          "settings": {
+            "placeholder_type": "ring",
+            "eyebrow": "New Season",
+            "heading": "Modern Ornaments",
+            "subtext": "Considered design, quality materials, for everyday wear.",
+            "primary_label": "Shop New Arrivals",
+            "primary_link": "/collections/new-arrivals"
+          }
+        },
+        "slide3": {
+          "type": "slide",
+          "settings": {
+            "placeholder_type": "earrings",
+            "eyebrow": "Best Sellers",
+            "heading": "Loved by Customers",
+            "subtext": "The pieces our customers return to, again and again.",
+            "primary_label": "Shop Best Sellers",
+            "primary_link": "/collections/best-sellers"
+          }
+        }
       },
-      "block_order": ["rings", "earrings", "necklaces", "bracelets", "wedding", "gifts"],
-      "settings": {
-        "eyebrow": "Shop by Category",
-        "heading": "Featured Collections",
-        "subtext": "Explore our most-loved jewellery, from everyday essentials to statement pieces."
-      }
+      "block_order": ["slide1", "slide2", "slide3"],
+      "settings": { "autoplay_seconds": 6 }
+    },
+    "promo_grid": {
+      "type": "promo-tiles",
+      "blocks": {
+        "p1": { "type": "tile", "settings": { "heading": "", "button_label": "", "placeholder_type": "ring" } },
+        "p2": { "type": "tile", "settings": { "heading": "Just Launched", "button_label": "View Details", "placeholder_type": "gem", "link": "/collections/new-arrivals" } },
+        "p3": { "type": "tile", "settings": { "heading": "Best Summer Sale", "button_label": "View Details", "placeholder_type": "bracelet", "link": "/collections/all" } },
+        "p4": { "type": "tile", "settings": { "heading": "Necklaces", "button_label": "View Details", "placeholder_type": "necklace", "link": "/collections/necklaces" } },
+        "p5": { "type": "tile", "settings": { "heading": "", "button_label": "", "placeholder_type": "earrings" } },
+        "p6": { "type": "tile", "settings": { "heading": "Diamond Rings", "button_label": "View Details", "placeholder_type": "ring", "link": "/collections/rings" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6"],
+      "settings": { "columns": "3", "show_overlay": true, "full_width": false, "tight_spacing": false }
     },
     "new_arrivals": {
-      "type": "product-grid",
+      "type": "product-showcase",
       "settings": {
-        "eyebrow": "New In",
+        "eyebrow": "Just In Now",
         "heading": "New Arrivals",
-        "subtext": "The latest additions to the Karun Jewellers collection.",
         "collection": "new-arrivals",
-        "product_count": 4,
+        "product_count": 8,
         "show_view_all": true,
-        "view_all_label": "View All New Arrivals"
+        "view_all_label": "View All New Arrivals",
+        "show_feature": true,
+        "feature_position": "right",
+        "feature_eyebrow": "Handpicked Diamonds",
+        "feature_heading": "Let Promise Solitaire Ring Mount",
+        "feature_button_label": "Shop Now",
+        "feature_link": "/collections/rings"
       }
     },
     "brand_story": {
@@ -61,16 +92,67 @@
         "button_link": "/pages/about-us"
       }
     },
+    "banner_strip": {
+      "type": "promo-tiles",
+      "blocks": {
+        "b1": { "type": "tile", "settings": { "heading": "Diamond's Haven", "button_label": "Shop Now", "placeholder_type": "gem", "link": "/collections/all" } },
+        "b2": { "type": "tile", "settings": { "heading": "Exclusively Elegant", "button_label": "Shop Now", "placeholder_type": "necklace", "link": "/collections/necklaces" } },
+        "b3": { "type": "tile", "settings": { "heading": "The Soul Searcher", "button_label": "Shop Now", "placeholder_type": "ring", "link": "/collections/rings" } }
+      },
+      "block_order": ["b1", "b2", "b3"],
+      "settings": { "columns": "3", "show_overlay": true, "full_width": true, "tight_spacing": false }
+    },
+    "rare_collections": {
+      "type": "collection-showcase",
+      "blocks": {
+        "c1": { "type": "collection", "settings": { "title": "Earrings", "badge_label": "New" } },
+        "c2": { "type": "collection", "settings": { "title": "Necklaces", "badge_label": "Sale" } },
+        "c3": { "type": "collection", "settings": { "title": "Bracelets" } },
+        "c4": { "type": "collection", "settings": { "title": "Rings", "badge_label": "Sale" } },
+        "c5": { "type": "collection", "settings": { "title": "Wedding Jewellery" } },
+        "c6": { "type": "collection", "settings": { "title": "Gifts" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6"],
+      "settings": {
+        "eyebrow": "Carefully Crafted",
+        "heading": "Rare Collections",
+        "show_feature": true,
+        "feature_position": "right",
+        "feature_eyebrow": "Platinum Necklace",
+        "feature_heading": "Necklace & Pendant Set",
+        "feature_button_label": "View All Collection",
+        "feature_link": "/collections/necklaces"
+      }
+    },
     "best_sellers": {
-      "type": "product-grid",
+      "type": "product-showcase",
       "settings": {
         "eyebrow": "Loved by Customers",
         "heading": "Best Sellers",
-        "subtext": "",
         "collection": "best-sellers",
-        "product_count": 4,
+        "product_count": 8,
         "show_view_all": true,
-        "view_all_label": "View All Best Sellers"
+        "view_all_label": "View All Best Sellers",
+        "show_feature": true,
+        "feature_position": "right",
+        "feature_eyebrow": "The Original Showcase",
+        "feature_heading": "Mikel Pearls",
+        "feature_button_label": "Shop Pearls",
+        "feature_link": "/collections/all"
+      }
+    },
+    "handpicked": {
+      "type": "product-showcase",
+      "settings": {
+        "eyebrow": "Fine and Golden Sentiments",
+        "heading": "Handpicked Products",
+        "product_count": 4,
+        "show_view_all": false,
+        "show_feature": true,
+        "feature_position": "left",
+        "feature_heading": "Handpicked Products",
+        "feature_button_label": "Shop Now",
+        "feature_link": "/collections/all"
       }
     },
     "editorial": {
@@ -84,6 +166,22 @@
         "button_label": "Discover Our Collection",
         "button_link": "/collections/all",
         "button_style": "outline"
+      }
+    },
+    "accessories": {
+      "type": "product-showcase",
+      "settings": {
+        "eyebrow": "16 Items",
+        "heading": "Make Your Day Brighter",
+        "subtext": "Accessories to complete every look.",
+        "product_count": 8,
+        "show_view_all": true,
+        "view_all_label": "Shop All Accessories",
+        "show_feature": true,
+        "feature_position": "left",
+        "feature_heading": "Make Your Day Brighter",
+        "feature_button_label": "Shop Accessories",
+        "feature_link": "/collections/all"
       }
     },
     "trust": {
@@ -110,6 +208,17 @@
       "type": "visit-us",
       "settings": { "eyebrow": "Our Showrooms", "heading": "Visit Karun Jewellers" }
     },
+    "category_footer": {
+      "type": "category-tiles",
+      "blocks": {
+        "cat1": { "type": "tile", "settings": { "label": "Pearls", "placeholder_type": "necklace", "link": "/collections/necklaces" } },
+        "cat2": { "type": "tile", "settings": { "label": "Necklaces", "placeholder_type": "necklace", "link": "/collections/necklaces" } },
+        "cat3": { "type": "tile", "settings": { "label": "Bracelets", "placeholder_type": "bracelet", "link": "/collections/bracelets" } },
+        "cat4": { "type": "tile", "settings": { "label": "Rings", "placeholder_type": "ring", "link": "/collections/rings" } }
+      },
+      "block_order": ["cat1", "cat2", "cat3", "cat4"],
+      "settings": { "heading": "Shop by Category" }
+    },
     "newsletter": {
       "type": "newsletter",
       "settings": {
@@ -119,15 +228,20 @@
     }
   },
   "order": [
-    "hero",
-    "featured_collections",
+    "hero_slider",
+    "promo_grid",
     "new_arrivals",
     "brand_story",
+    "banner_strip",
+    "rare_collections",
     "best_sellers",
+    "handpicked",
     "editorial",
+    "accessories",
     "trust",
     "testimonials",
     "visit_us",
+    "category_footer",
     "newsletter"
   ]
 }

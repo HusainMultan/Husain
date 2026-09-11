@@ -313,4 +313,61 @@
     });
   });
   renderWishlistState();
+
+  /* ---------- Hero slider ---------- */
+  qsa("[data-hero-slider]").forEach(function (slider) {
+    var slides = qsa("[data-hero-slide]", slider);
+    var dots = qsa("[data-hero-dot]", slider);
+    if (slides.length < 2) return;
+    var current = 0;
+    var autoplayMs = parseInt(slider.getAttribute("data-autoplay"), 10) || 0;
+    var timer;
+
+    function show(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function (s, i) { s.setAttribute("data-active", i === current ? "true" : "false"); });
+      dots.forEach(function (d, i) { d.setAttribute("aria-current", i === current ? "true" : "false"); });
+    }
+    function next() { show(current + 1); }
+    function prev() { show(current - 1); }
+    function restartAutoplay() {
+      if (!autoplayMs || prefersReducedMotion) return;
+      clearInterval(timer);
+      timer = setInterval(next, autoplayMs);
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () { show(i); restartAutoplay(); });
+    });
+    var nextBtn = qs("[data-hero-next]", slider);
+    var prevBtn = qs("[data-hero-prev]", slider);
+    if (nextBtn) nextBtn.addEventListener("click", function () { next(); restartAutoplay(); });
+    if (prevBtn) prevBtn.addEventListener("click", function () { prev(); restartAutoplay(); });
+
+    var touchStartX = null;
+    slider.addEventListener("touchstart", function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+    slider.addEventListener("touchend", function (e) {
+      if (touchStartX === null) return;
+      var diff = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(diff) > 40) { diff < 0 ? next() : prev(); restartAutoplay(); }
+      touchStartX = null;
+    }, { passive: true });
+
+    show(0);
+    restartAutoplay();
+  });
+
+  /* ---------- Showcase / collection carousel arrows ---------- */
+  qsa("[data-carousel-track]").forEach(function (track) {
+    var wrap = track.closest("[data-carousel-wrap]") || track.parentElement;
+    var prevBtn = qs("[data-carousel-prev]", wrap);
+    var nextBtn = qs("[data-carousel-next]", wrap);
+    function scrollByAmount(dir) {
+      var item = track.firstElementChild;
+      var amount = item ? item.getBoundingClientRect().width + 16 : track.clientWidth * 0.8;
+      track.scrollBy({ left: dir * amount, behavior: "smooth" });
+    }
+    if (prevBtn) prevBtn.addEventListener("click", function () { scrollByAmount(-1); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { scrollByAmount(1); });
+  });
 })();

@@ -361,3 +361,96 @@ p { margin: 0 0 1em; color: var(--color-text); }
 @media (min-width: 750px) { .hidden-mobile { display: initial; } }
 .hidden-desktop { display: initial; }
 @media (min-width: 990px) { .hidden-desktop { display: none; } }
+
+/* =========================================================
+   Hero slider
+   ========================================================= */
+.hero-slider { position: relative; overflow: hidden; }
+.hero-slider__track { position: relative; aspect-ratio: 16/8; }
+.hero-slider__slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity 0.8s ease; }
+.hero-slider__slide[data-active="true"] { opacity: 1; visibility: visible; z-index: 1; }
+.hero-slider__slide img { width: 100%; height: 100%; object-fit: cover; }
+.hero-slider__slide .hero__content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 6vw; color: #fff; background: linear-gradient(90deg, rgba(36,27,29,0.55) 0%, rgba(36,27,29,0.05) 60%); }
+.hero-slider__slide .hero__content .eyebrow { color: #fff; opacity: 0.9; }
+.hero-slider__slide .hero__content h1 { color: #fff; max-width: 14ch; }
+.hero-slider__slide .hero__content p { color: rgba(255,255,255,0.9); max-width: 42ch; }
+.animations-enabled .hero-slider__slide[data-active="true"] .hero__content > * { animation: heroFadeUp 0.7s ease both; }
+.animations-enabled .hero-slider__slide[data-active="true"] .hero__content > *:nth-child(2) { animation-delay: 0.08s; }
+.animations-enabled .hero-slider__slide[data-active="true"] .hero__content > *:nth-child(3) { animation-delay: 0.16s; }
+.animations-enabled .hero-slider__slide[data-active="true"] .hero__content > *:nth-child(4) { animation-delay: 0.24s; }
+@keyframes heroFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.hero-slider__dots { position: absolute; bottom: 20px; left: 0; right: 0; display: flex; justify-content: center; gap: 10px; z-index: 2; }
+.hero-slider__dot { width: 9px; height: 9px; border-radius: 50%; border: 1px solid #fff; background: transparent; padding: 0; opacity: 0.7; transition: opacity 0.2s ease, background-color 0.2s ease; }
+.hero-slider__dot[aria-current="true"] { background: #fff; opacity: 1; }
+.hero-slider__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.85); border: none; display: flex; align-items: center; justify-content: center; color: var(--color-text); }
+.hero-slider__arrow:hover { background: #fff; }
+.hero-slider__arrow--prev { left: 20px; }
+.hero-slider__arrow--next { right: 20px; }
+@media (max-width: 749px) {
+  .hero-slider__track { aspect-ratio: 4/5; }
+  .hero-slider__slide .hero__content { padding: 24px; background: linear-gradient(180deg, rgba(36,27,29,0.15) 0%, rgba(36,27,29,0.65) 100%); justify-content: flex-end; }
+  .hero-slider__arrow { display: none; }
+}
+
+/* =========================================================
+   Promo tiles (dark image + heading + CTA grid)
+   ========================================================= */
+.promo-tiles { display: grid; gap: 4px; }
+.promo-tiles[data-columns="2"] { grid-template-columns: repeat(2, 1fr); }
+.promo-tiles[data-columns="3"] { grid-template-columns: repeat(3, 1fr); }
+.promo-tiles[data-columns="4"] { grid-template-columns: repeat(4, 1fr); }
+.promo-tile { position: relative; aspect-ratio: 4/3; overflow: hidden; display: block; }
+.promo-tile img, .promo-tile svg { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.promo-tile:hover img, .promo-tile:hover svg { transform: scale(1.04); }
+.promo-tile__overlay { position: absolute; inset: 0; background: rgba(36,27,29,0.38); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 6%; }
+.promo-tile__overlay h3 { color: #fff; font-size: clamp(1.1rem, 2vw, 1.6rem); margin-bottom: 14px; }
+.promo-tile.no-overlay .promo-tile__overlay { background: transparent; justify-content: flex-end; padding-bottom: 5%; align-items: center; text-align: center; }
+.promo-tile.no-overlay .promo-tile__overlay h3 { background: rgba(255,255,255,0.92); color: var(--color-text); padding: 8px 18px; border-radius: var(--radius); font-size: 0.85rem; letter-spacing: 0.04em; margin: 0; }
+@media (max-width: 749px) {
+  .promo-tiles[data-columns="3"], .promo-tiles[data-columns="4"] { grid-template-columns: repeat(2, 1fr); }
+}
+
+.promo-tiles-section--tight { padding-block: 32px; }
+
+/* =========================================================
+   Product / collection showcase (carousel + optional feature panel)
+   ========================================================= */
+.showcase { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.showcase[data-has-feature="true"] { grid-template-columns: 2fr 1fr; align-items: stretch; }
+.showcase[data-has-feature="true"][data-feature-position="left"] { grid-template-columns: 1fr 2fr; }
+.showcase[data-has-feature="true"][data-feature-position="left"] .showcase__feature { order: -1; }
+@media (max-width: 989px) { .showcase[data-has-feature="true"] { grid-template-columns: 1fr; } }
+
+.showcase__carousel-wrap { position: relative; }
+.showcase__carousel { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(46%, 1fr); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
+.showcase__carousel::-webkit-scrollbar { display: none; }
+.showcase__carousel > * { scroll-snap-align: start; }
+@media (min-width: 750px) { .showcase__carousel { grid-auto-columns: minmax(30%, 1fr); } }
+@media (min-width: 990px) { .showcase[data-has-feature="true"] .showcase__carousel { grid-auto-columns: minmax(46%, 1fr); } .showcase:not([data-has-feature="true"]) .showcase__carousel { grid-auto-columns: minmax(23%, 1fr); } }
+.showcase__arrow { position: absolute; top: 40%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; background: var(--color-surface); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; z-index: 2; }
+.showcase__arrow:hover { background: var(--color-ivory); }
+.showcase__arrow--prev { left: -14px; }
+.showcase__arrow--next { right: -14px; }
+@media (max-width: 749px) { .showcase__arrow { display: none; } }
+
+.showcase__feature { position: relative; overflow: hidden; border-radius: var(--radius); min-height: 320px; }
+.showcase__feature img, .showcase__feature svg { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.showcase__feature-content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; color: #fff; background: linear-gradient(180deg, rgba(36,27,29,0) 30%, rgba(36,27,29,0.75) 100%); }
+.showcase__feature-content .eyebrow { color: rgba(255,255,255,0.85); }
+.showcase__feature-content h3 { color: #fff; margin-bottom: 12px; }
+
+/* Collection carousel cards (with sale-style badge) */
+.collection-carousel-card { position: relative; display: block; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/5; }
+.collection-carousel-card img, .collection-carousel-card svg { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.collection-carousel-card:hover img, .collection-carousel-card:hover svg { transform: scale(1.05); }
+.collection-carousel-card__badge { position: absolute; top: 12px; left: 12px; background: var(--color-primary); color: #fff; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 10px; border-radius: var(--radius); z-index: 1; }
+.collection-carousel-card__body { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px; color: #fff; background: linear-gradient(180deg, rgba(36,27,29,0) 40%, rgba(36,27,29,0.72) 100%); }
+.collection-carousel-card__body h3 { color: #fff; font-size: 1rem; margin-bottom: 2px; }
+.collection-carousel-card__body span { font-size: 0.8rem; color: rgba(255,255,255,0.85); }
+
+/* Category tiles footer strip */
+.category-tile { position: relative; display: block; aspect-ratio: 1; overflow: hidden; }
+.category-tile img, .category-tile svg { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.category-tile:hover img, .category-tile:hover svg { transform: scale(1.06); }
+.category-tile__label { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px; text-align: center; background: linear-gradient(180deg, rgba(36,27,29,0) 50%, rgba(36,27,29,0.65) 100%); }
+.category-tile__label span { color: #fff; font-size: 0.9rem; letter-spacing: 0.04em; }

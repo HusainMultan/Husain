@@ -1,0 +1,117 @@
+<section class="section">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-header" data-animate>
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.subtext != blank -%}<p>{{ section.settings.subtext }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- assign has_feature = false -%}
+    {%- if section.settings.show_feature -%}{%- assign has_feature = true -%}{%- endif -%}
+
+    <div class="showcase" data-has-feature="{{ has_feature }}" data-feature-position="{{ section.settings.feature_position }}">
+      <div class="showcase__carousel-wrap" data-carousel-wrap>
+        <div class="showcase__carousel" data-carousel-track>
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign card_title = block.settings.title | default: block.settings.collection.title
+              assign placeholder_type = 'gem'
+              if card_title contains 'Ring'
+                assign placeholder_type = 'ring'
+              elsif card_title contains 'Earring' or card_title contains 'Stud'
+                assign placeholder_type = 'earrings'
+              elsif card_title contains 'Necklace' or card_title contains 'Chain' or card_title contains 'Pendant'
+                assign placeholder_type = 'necklace'
+              elsif card_title contains 'Bracelet' or card_title contains 'Bangle'
+                assign placeholder_type = 'bracelet'
+              elsif card_title contains 'Gift'
+                assign placeholder_type = 'gift'
+              endif
+            -%}
+            <a href="{{ block.settings.collection.url | default: '#' }}" class="collection-carousel-card" data-animate {{ block.shopify_attributes }}>
+              {%- if block.settings.badge_label != blank -%}
+                <span class="collection-carousel-card__badge">{{ block.settings.badge_label }}</span>
+              {%- endif -%}
+              {%- if block.settings.image -%}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ card_title | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+              {%- elsif block.settings.collection.featured_image -%}
+                <img src="{{ block.settings.collection.featured_image | image_url: width: 600 }}" alt="{{ card_title | escape }}" loading="lazy" width="{{ block.settings.collection.featured_image.width }}" height="{{ block.settings.collection.featured_image.height }}">
+              {%- else -%}
+                {% render 'jewellery-placeholder', type: placeholder_type %}
+              {%- endif -%}
+              <div class="collection-carousel-card__body">
+                <h3>{{ card_title }}</h3>
+                {%- if block.settings.subtext != blank -%}<span>{{ block.settings.subtext }}</span>{%- endif -%}
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+        <button type="button" class="showcase__arrow showcase__arrow--prev" data-carousel-prev aria-label="Previous">{% render 'icon', name: 'chevron-left' %}</button>
+        <button type="button" class="showcase__arrow showcase__arrow--next" data-carousel-next aria-label="Next">{% render 'icon', name: 'chevron-right' %}</button>
+      </div>
+
+      {%- if has_feature -%}
+        <a href="{{ section.settings.feature_link | default: '#' }}" class="showcase__feature" data-animate>
+          {%- if section.settings.feature_image -%}
+            <img src="{{ section.settings.feature_image | image_url: width: 900 }}" alt="{{ section.settings.feature_heading | escape }}" loading="lazy" width="{{ section.settings.feature_image.width }}" height="{{ section.settings.feature_image.height }}">
+          {%- else -%}
+            {% render 'jewellery-placeholder', type: 'necklace' %}
+          {%- endif -%}
+          <div class="showcase__feature-content">
+            {%- if section.settings.feature_eyebrow != blank -%}<span class="eyebrow">{{ section.settings.feature_eyebrow }}</span>{%- endif -%}
+            <h3>{{ section.settings.feature_heading }}</h3>
+            {%- if section.settings.feature_button_label != blank -%}<span class="btn btn--small btn--on-dark">{{ section.settings.feature_button_label }}</span>{%- endif -%}
+          </div>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection showcase",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Carefully Crafted" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Rare Collections" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext" },
+    { "type": "header", "content": "Feature panel" },
+    { "type": "checkbox", "id": "show_feature", "label": "Show feature panel alongside carousel", "default": false },
+    { "type": "select", "id": "feature_position", "label": "Feature panel position", "default": "right", "options": [
+      { "value": "left", "label": "Left" },
+      { "value": "right", "label": "Right" }
+    ]},
+    { "type": "image_picker", "id": "feature_image", "label": "Feature image" },
+    { "type": "text", "id": "feature_eyebrow", "label": "Feature eyebrow" },
+    { "type": "text", "id": "feature_heading", "label": "Feature heading", "default": "Necklace & Pendant Set" },
+    { "type": "text", "id": "feature_button_label", "label": "Feature button label", "default": "View All Collection" },
+    { "type": "url", "id": "feature_link", "label": "Feature link" }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "title", "label": "Title override" },
+        { "type": "text", "id": "subtext", "label": "Subtext (e.g. price from)" },
+        { "type": "text", "id": "badge_label", "label": "Badge label (e.g. Sale)" },
+        { "type": "image_picker", "id": "image", "label": "Image override" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection showcase",
+      "blocks": [
+        { "type": "collection", "settings": { "title": "Earrings" } },
+        { "type": "collection", "settings": { "title": "Necklaces" } },
+        { "type": "collection", "settings": { "title": "Bracelets" } },
+        { "type": "collection", "settings": { "title": "Rings" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
