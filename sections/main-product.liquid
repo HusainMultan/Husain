@@ -80,7 +80,6 @@
               <div class="variant-picker__label"><span>{{ option.name }}</span></div>
               <div class="variant-swatches">
                 {%- for value in option.values -%}
-                  {%- assign option_index = forloop.parentloop.index -%}
                   <input
                     type="radio"
                     id="OptionValue-{{ option.position }}-{{ forloop.index }}"

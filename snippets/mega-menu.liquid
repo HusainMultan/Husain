@@ -3,7 +3,8 @@
   Params: link (a link object from a linklist)
 {%- endcomment -%}
 {%- liquid
-  assign feature_collection = collections[link.title | handleize]
+  assign link_handle = link.title | handleize
+  assign feature_collection = collections[link_handle]
 -%}
 {%- if link.links.size > 0 -%}
   <div class="mega-menu">

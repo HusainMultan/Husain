@@ -39,7 +39,7 @@
 
     <div class="collection-layout">
       <aside class="filters-sidebar">
-        {% render 'collection-filters', collection: collection, paginate: paginate %}
+        {% render 'collection-filters', collection: collection %}
       </aside>
 
       <div>
@@ -75,7 +75,7 @@
       <button type="button" class="btn btn--icon" data-drawer-close aria-label="Close">{% render 'icon', name: 'close' %}</button>
     </div>
     <div class="drawer__body">
-      {% render 'collection-filters', collection: collection, paginate: paginate %}
+      {% render 'collection-filters', collection: collection %}
     </div>
     <div class="drawer__footer">
       <button type="button" class="btn btn--full" data-drawer-close>Show Results</button>

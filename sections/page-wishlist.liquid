@@ -18,19 +18,47 @@
     var handles = [];
     try { handles = JSON.parse(localStorage.getItem(WISHLIST_KEY) || "[]"); } catch (e) {}
     if (!handles.length) { emptyState.hidden = false; return; }
+    var currencyCode = "{{ cart.currency.iso_code | default: shop.currency }}";
     handles.forEach(function (handle) {
       fetch("/products/" + handle + ".js")
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (product) {
           if (!product) return;
           var img = product.featured_image || (product.images && product.images[0]);
+          var productUrl = "/products/" + product.handle;
+
           var card = document.createElement("div");
           card.className = "product-card";
-          card.innerHTML =
-            '<div class="product-card__media"><a href="/products/' + product.handle + '">' +
-            (img ? '<img src="' + img + '&width=700" alt="' + product.title.replace(/"/g, "&quot;") + '" loading="lazy">' : "") +
-            '</a></div><div class="product-card__info"><h3 class="product-card__title"><a href="/products/' + product.handle + '">' + product.title + '</a></h3>' +
-            '<span class="product-card__price">' + (product.price / 100).toLocaleString("en-GB", { style: "currency", currency: "{{ cart.currency.iso_code | default: shop.currency }}" }) + '</span></div>';
+
+          var media = document.createElement("div");
+          media.className = "product-card__media";
+          var mediaLink = document.createElement("a");
+          mediaLink.href = productUrl;
+          if (img) {
+            var imgEl = document.createElement("img");
+            imgEl.src = img + "&width=700";
+            imgEl.alt = product.title;
+            imgEl.loading = "lazy";
+            mediaLink.appendChild(imgEl);
+          }
+          media.appendChild(mediaLink);
+
+          var info = document.createElement("div");
+          info.className = "product-card__info";
+          var titleEl = document.createElement("h3");
+          titleEl.className = "product-card__title";
+          var titleLink = document.createElement("a");
+          titleLink.href = productUrl;
+          titleLink.textContent = product.title;
+          titleEl.appendChild(titleLink);
+          var priceEl = document.createElement("span");
+          priceEl.className = "product-card__price";
+          priceEl.textContent = (product.price / 100).toLocaleString("en-GB", { style: "currency", currency: currencyCode });
+          info.appendChild(titleEl);
+          info.appendChild(priceEl);
+
+          card.appendChild(media);
+          card.appendChild(info);
           grid.appendChild(card);
         });
     });
