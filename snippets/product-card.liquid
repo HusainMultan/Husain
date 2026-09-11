@@ -1,6 +1,19 @@
 {%- comment -%}
   Premium product card. Params: product, image_ratio (default 4/5)
 {%- endcomment -%}
+{%- liquid
+  assign placeholder_type = 'gem'
+  case product.type
+    when 'Rings'
+      assign placeholder_type = 'ring'
+    when 'Earrings'
+      assign placeholder_type = 'earrings'
+    when 'Necklaces'
+      assign placeholder_type = 'necklace'
+    when 'Bracelets'
+      assign placeholder_type = 'bracelet'
+  endcase
+-%}
 <div class="product-card" data-animate>
   <div class="product-card__media">
     <a href="{{ product.url }}" aria-label="{{ product.title }}">
@@ -14,7 +27,7 @@
           width="700" height="875"
         >
       {%- else -%}
-        {{ 'product-1' | placeholder_svg_tag }}
+        {% render 'jewellery-placeholder', type: placeholder_type %}
       {%- endif -%}
       {%- if product.media[1] -%}
         <img

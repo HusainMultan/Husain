@@ -42,7 +42,7 @@
               {%- if item.image -%}
                 <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.image.alt | escape }}" width="84" height="84">
               {%- else -%}
-                {{ 'product-1' | placeholder_svg_tag }}
+                {% render 'jewellery-placeholder', type: 'gem' %}
               {%- endif -%}
             </a>
             <div>

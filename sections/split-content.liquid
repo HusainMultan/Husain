@@ -3,7 +3,7 @@
     {%- if section.settings.image -%}
       <img src="{{ section.settings.image | image_url: width: 1200 }}" srcset="{{ section.settings.image | image_url: width: 700 }} 700w, {{ section.settings.image | image_url: width: 1200 }} 1200w" alt="{{ section.settings.heading | escape }}" loading="lazy" width="1200" height="1500">
     {%- else -%}
-      {{ 'lifestyle-1' | placeholder_svg_tag }}
+      {% render 'jewellery-placeholder', type: 'necklace' %}
     {%- endif -%}
   </div>
   <div class="split-section__content">

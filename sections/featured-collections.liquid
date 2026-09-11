@@ -10,6 +10,21 @@
 
     <div class="grid grid--3">
       {%- for block in section.blocks -%}
+        {%- liquid
+          assign card_title = block.settings.title | default: block.settings.collection.title
+          assign placeholder_type = 'gem'
+          if card_title contains 'Ring'
+            assign placeholder_type = 'ring'
+          elsif card_title contains 'Earring'
+            assign placeholder_type = 'earrings'
+          elsif card_title contains 'Necklace'
+            assign placeholder_type = 'necklace'
+          elsif card_title contains 'Bracelet'
+            assign placeholder_type = 'bracelet'
+          elsif card_title contains 'Gift'
+            assign placeholder_type = 'gift'
+          endif
+        -%}
         <a href="{{ block.settings.collection.url | default: '#' }}" class="collection-card" data-animate {{ block.shopify_attributes }}>
           <div class="collection-card__media">
             {%- if block.settings.image -%}
@@ -17,7 +32,7 @@
             {%- elsif block.settings.collection.featured_image -%}
               <img src="{{ block.settings.collection.featured_image | image_url: width: 800 }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="{{ block.settings.collection.featured_image.width }}" height="{{ block.settings.collection.featured_image.height }}">
             {%- else -%}
-              {{ 'collection-1' | placeholder_svg_tag }}
+              {% render 'jewellery-placeholder', type: placeholder_type %}
             {%- endif -%}
           </div>
           <div class="collection-card__body">

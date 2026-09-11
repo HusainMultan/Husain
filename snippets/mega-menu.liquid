@@ -5,6 +5,18 @@
 {%- liquid
   assign link_handle = link.title | handleize
   assign feature_collection = collections[link_handle]
+  assign placeholder_type = 'gem'
+  if link.title contains 'Ring'
+    assign placeholder_type = 'ring'
+  elsif link.title contains 'Earring'
+    assign placeholder_type = 'earrings'
+  elsif link.title contains 'Necklace'
+    assign placeholder_type = 'necklace'
+  elsif link.title contains 'Bracelet'
+    assign placeholder_type = 'bracelet'
+  elsif link.title contains 'Gift'
+    assign placeholder_type = 'gift'
+  endif
 -%}
 {%- if link.links.size > 0 -%}
   <div class="mega-menu">
@@ -24,7 +36,7 @@
           {%- if feature_collection.featured_image -%}
             <img src="{{ feature_collection.featured_image | image_url: width: 400 }}" alt="" loading="lazy" width="{{ feature_collection.featured_image.width }}" height="{{ feature_collection.featured_image.height }}">
           {%- else -%}
-            {{ 'collection-1' | placeholder_svg_tag }}
+            {% render 'jewellery-placeholder', type: placeholder_type %}
           {%- endif -%}
           <span class="link-underline">Shop {{ link.title }}</span>
         </a>

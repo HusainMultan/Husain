@@ -12,7 +12,7 @@
         fetchpriority="high"
       >
     {%- else -%}
-      {{ 'hero-apparel-2' | placeholder_svg_tag }}
+      {% render 'jewellery-placeholder', type: 'necklace' %}
     {%- endif -%}
     <div class="hero__content">
       {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}

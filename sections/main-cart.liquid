@@ -26,7 +26,7 @@
           {%- for item in cart.items -%}
             <div class="cart-line">
               <a href="{{ item.url }}">
-                {%- if item.image -%}<img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.image.alt | escape }}" width="84" height="84">{%- else -%}{{ 'product-1' | placeholder_svg_tag }}{%- endif -%}
+                {%- if item.image -%}<img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.image.alt | escape }}" width="84" height="84">{%- else -%}{% render 'jewellery-placeholder', type: 'gem' %}{%- endif -%}
               </a>
               <div>
                 <p class="cart-line__title"><a href="{{ item.url }}">{{ item.product.title }}</a></p>

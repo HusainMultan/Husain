@@ -5,7 +5,7 @@
     {%- if collection.image -%}
       <img src="{{ collection.image | image_url: width: 1800 }}" alt="{{ collection.title | escape }}" loading="eager" width="{{ collection.image.width }}" height="{{ collection.image.height }}">
     {%- else -%}
-      {{ 'collection-1' | placeholder_svg_tag }}
+      {% render 'jewellery-placeholder', type: 'gem' %}
     {%- endif -%}
     <div class="collection-banner__content">
       <h1>{{ collection.title }}</h1>

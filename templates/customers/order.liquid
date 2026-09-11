@@ -7,7 +7,7 @@
     {%- for line_item in order.line_items -%}
       <div class="cart-line">
         <a href="{{ line_item.product.url }}">
-          {%- if line_item.image -%}<img src="{{ line_item.image | image_url: width: 200 }}" alt="{{ line_item.title | escape }}" width="84" height="84">{%- else -%}{{ 'product-1' | placeholder_svg_tag }}{%- endif -%}
+          {%- if line_item.image -%}<img src="{{ line_item.image | image_url: width: 200 }}" alt="{{ line_item.title | escape }}" width="84" height="84">{%- else -%}{% render 'jewellery-placeholder', type: 'gem' %}{%- endif -%}
         </a>
         <div>
           <p class="cart-line__title">{{ line_item.title }}</p>
