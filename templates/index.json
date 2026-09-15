@@ -15,8 +15,9 @@
         "slide1": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Necklace_Banner_-_Karim_Jewellers.png",
             "placeholder_type": "necklace",
-            "eyebrow": "Karun Jewellers",
+            "eyebrow": "Karim Jewellers",
             "heading": "Timeless Elegance, Beautifully Crafted",
             "subtext": "Discover jewellery designed to celebrate life's most memorable moments.",
             "primary_label": "Shop Jewellery",
@@ -33,7 +34,9 @@
             "heading": "Modern Ornaments",
             "subtext": "Considered design, quality materials, for everyday wear.",
             "primary_label": "Shop New Arrivals",
-            "primary_link": "/collections/new-arrivals"
+            "primary_link": "/collections/new-arrivals",
+            "secondary_label": "",
+            "secondary_link": ""
           }
         },
         "slide3": {
@@ -44,31 +47,102 @@
             "heading": "Loved by Customers",
             "subtext": "The pieces our customers return to, again and again.",
             "primary_label": "Shop Best Sellers",
-            "primary_link": "/collections/best-sellers"
+            "primary_link": "/collections/best-sellers",
+            "secondary_label": "",
+            "secondary_link": ""
           }
         }
       },
-      "block_order": ["slide1", "slide2", "slide3"],
-      "settings": { "autoplay_seconds": 6 }
+      "block_order": [
+        "slide1",
+        "slide2",
+        "slide3"
+      ],
+      "settings": {
+        "autoplay_seconds": 6
+      }
     },
     "promo_grid": {
       "type": "promo-tiles",
       "blocks": {
-        "p1": { "type": "tile", "settings": { "heading": "", "button_label": "", "placeholder_type": "ring" } },
-        "p2": { "type": "tile", "settings": { "heading": "Just Launched", "button_label": "View Details", "placeholder_type": "gem", "link": "/collections/new-arrivals" } },
-        "p3": { "type": "tile", "settings": { "heading": "Best Summer Sale", "button_label": "View Details", "placeholder_type": "bracelet", "link": "/collections/all" } },
-        "p4": { "type": "tile", "settings": { "heading": "Necklaces", "button_label": "View Details", "placeholder_type": "necklace", "link": "/collections/necklaces" } },
-        "p5": { "type": "tile", "settings": { "heading": "", "button_label": "", "placeholder_type": "earrings" } },
-        "p6": { "type": "tile", "settings": { "heading": "Diamond Rings", "button_label": "View Details", "placeholder_type": "ring", "link": "/collections/rings" } }
+        "p1": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "ring",
+            "heading": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "p2": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "gem",
+            "heading": "Just Launched",
+            "button_label": "View Details",
+            "link": "/collections/new-arrivals"
+          }
+        },
+        "p3": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "bracelet",
+            "heading": "Best Summer Sale",
+            "button_label": "View Details",
+            "link": "/collections/all"
+          }
+        },
+        "p4": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "necklace",
+            "heading": "Necklaces",
+            "button_label": "View Details",
+            "link": "/collections/necklaces"
+          }
+        },
+        "p5": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "earrings",
+            "heading": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "p6": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "ring",
+            "heading": "Diamond Rings",
+            "button_label": "View Details",
+            "link": "/collections/rings"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6"],
-      "settings": { "columns": "3", "show_overlay": true, "full_width": false, "tight_spacing": false }
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "columns": "3",
+        "show_overlay": true,
+        "full_width": false,
+        "tight_spacing": false
+      }
     },
     "new_arrivals": {
       "type": "product-showcase",
       "settings": {
         "eyebrow": "Just In Now",
         "heading": "New Arrivals",
+        "subtext": "",
         "collection": "new-arrivals",
         "product_count": 8,
         "show_view_all": true,
@@ -85,37 +159,130 @@
       "type": "split-content",
       "settings": {
         "layout": "image_left",
+        "tint_bg": false,
         "eyebrow": "Our Story",
         "heading": "A Legacy of Elegance",
         "text": "<p>Karun Jewellers brings together considered design and quality craftsmanship, offering jewellery for everyday wear and life's most meaningful occasions. This is placeholder copy, ready to be replaced with the brand's real story.</p>",
         "button_label": "Discover Our Story",
-        "button_link": "/pages/about-us"
+        "button_link": "/pages/about-us",
+        "button_style": "solid"
       }
     },
     "banner_strip": {
       "type": "promo-tiles",
       "blocks": {
-        "b1": { "type": "tile", "settings": { "heading": "Diamond's Haven", "button_label": "Shop Now", "placeholder_type": "gem", "link": "/collections/all" } },
-        "b2": { "type": "tile", "settings": { "heading": "Exclusively Elegant", "button_label": "Shop Now", "placeholder_type": "necklace", "link": "/collections/necklaces" } },
-        "b3": { "type": "tile", "settings": { "heading": "The Soul Searcher", "button_label": "Shop Now", "placeholder_type": "ring", "link": "/collections/rings" } }
+        "b1": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "gem",
+            "heading": "Diamond's Haven",
+            "button_label": "Shop Now",
+            "link": "/collections/all"
+          }
+        },
+        "b2": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "necklace",
+            "heading": "Exclusively Elegant",
+            "button_label": "Shop Now",
+            "link": "/collections/necklaces"
+          }
+        },
+        "b3": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "ring",
+            "heading": "The Soul Searcher",
+            "button_label": "Shop Now",
+            "link": "/collections/rings"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3"],
-      "settings": { "columns": "3", "show_overlay": true, "full_width": true, "tight_spacing": false }
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "columns": "3",
+        "show_overlay": true,
+        "full_width": true,
+        "tight_spacing": false
+      }
     },
     "rare_collections": {
       "type": "collection-showcase",
       "blocks": {
-        "c1": { "type": "collection", "settings": { "title": "Earrings", "badge_label": "New" } },
-        "c2": { "type": "collection", "settings": { "title": "Necklaces", "badge_label": "Sale" } },
-        "c3": { "type": "collection", "settings": { "title": "Bracelets" } },
-        "c4": { "type": "collection", "settings": { "title": "Rings", "badge_label": "Sale" } },
-        "c5": { "type": "collection", "settings": { "title": "Wedding Jewellery" } },
-        "c6": { "type": "collection", "settings": { "title": "Gifts" } }
+        "c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Earrings",
+            "subtext": "",
+            "badge_label": "New"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Necklaces",
+            "subtext": "",
+            "badge_label": "Sale"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Bracelets",
+            "subtext": "",
+            "badge_label": ""
+          }
+        },
+        "c4": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Rings",
+            "subtext": "",
+            "badge_label": "Sale"
+          }
+        },
+        "c5": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Wedding Jewellery",
+            "subtext": "",
+            "badge_label": ""
+          }
+        },
+        "c6": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Gifts",
+            "subtext": "",
+            "badge_label": ""
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
       "settings": {
         "eyebrow": "Carefully Crafted",
         "heading": "Rare Collections",
+        "subtext": "",
         "show_feature": true,
         "feature_position": "right",
         "feature_eyebrow": "Platinum Necklace",
@@ -129,6 +296,7 @@
       "settings": {
         "eyebrow": "Loved by Customers",
         "heading": "Best Sellers",
+        "subtext": "",
         "collection": "best-sellers",
         "product_count": 8,
         "show_view_all": true,
@@ -146,10 +314,14 @@
       "settings": {
         "eyebrow": "Fine and Golden Sentiments",
         "heading": "Handpicked Products",
+        "subtext": "",
+        "collection": "",
         "product_count": 4,
         "show_view_all": false,
+        "view_all_label": "View All",
         "show_feature": true,
         "feature_position": "left",
+        "feature_eyebrow": "",
         "feature_heading": "Handpicked Products",
         "feature_button_label": "Shop Now",
         "feature_link": "/collections/all"
@@ -174,11 +346,13 @@
         "eyebrow": "16 Items",
         "heading": "Make Your Day Brighter",
         "subtext": "Accessories to complete every look.",
+        "collection": "",
         "product_count": 8,
         "show_view_all": true,
         "view_all_label": "Shop All Accessories",
         "show_feature": true,
         "feature_position": "left",
+        "feature_eyebrow": "",
         "feature_heading": "Make Your Day Brighter",
         "feature_button_label": "Shop Accessories",
         "feature_link": "/collections/all"
@@ -187,37 +361,133 @@
     "trust": {
       "type": "trust-badges",
       "blocks": {
-        "delivery": { "type": "badge", "settings": { "icon": "truck", "title": "UK Delivery", "text": "Reliable delivery across the UK." } },
-        "secure": { "type": "badge", "settings": { "icon": "shield", "title": "Secure Checkout", "text": "Shop with confidence through secure Shopify checkout." } },
-        "gift": { "type": "badge", "settings": { "icon": "gift", "title": "Premium Presentation", "text": "Beautiful packaging for every special purchase." } },
-        "care": { "type": "badge", "settings": { "icon": "headset", "title": "Customer Care", "text": "Dedicated assistance when you need it." } }
+        "delivery": {
+          "type": "badge",
+          "settings": {
+            "icon": "truck",
+            "title": "UK Delivery",
+            "text": "Reliable delivery across the UK."
+          }
+        },
+        "secure": {
+          "type": "badge",
+          "settings": {
+            "icon": "shield",
+            "title": "Secure Checkout",
+            "text": "Shop with confidence through secure Shopify checkout."
+          }
+        },
+        "gift": {
+          "type": "badge",
+          "settings": {
+            "icon": "gift",
+            "title": "Premium Presentation",
+            "text": "Beautiful packaging for every special purchase."
+          }
+        },
+        "care": {
+          "type": "badge",
+          "settings": {
+            "icon": "headset",
+            "title": "Customer Care",
+            "text": "Dedicated assistance when you need it."
+          }
+        }
       },
-      "block_order": ["delivery", "secure", "gift", "care"]
+      "block_order": [
+        "delivery",
+        "secure",
+        "gift",
+        "care"
+      ],
+      "settings": {}
     },
     "testimonials": {
       "type": "testimonials",
       "blocks": {
-        "t1": { "type": "testimonial", "settings": { "quote": "Demo review text — a lovely piece, beautifully presented. This placeholder can be replaced with a genuine customer review.", "name": "Demo Customer" } },
-        "t2": { "type": "testimonial", "settings": { "quote": "Demo review text — excellent service and a beautiful finish. This placeholder can be replaced with a genuine customer review.", "name": "Demo Customer" } },
-        "t3": { "type": "testimonial", "settings": { "quote": "Demo review text — exactly what I was looking for. This placeholder can be replaced with a genuine customer review.", "name": "Demo Customer" } }
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Demo review text — a lovely piece, beautifully presented. This placeholder can be replaced with a genuine customer review.",
+            "name": "Demo Customer"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Demo review text — excellent service and a beautiful finish. This placeholder can be replaced with a genuine customer review.",
+            "name": "Demo Customer"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Demo review text — exactly what I was looking for. This placeholder can be replaced with a genuine customer review.",
+            "name": "Demo Customer"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3"],
-      "settings": { "heading": "What Our Customers Say" }
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "heading": "What Our Customers Say"
+      }
     },
     "visit_us": {
       "type": "visit-us",
-      "settings": { "eyebrow": "Our Showrooms", "heading": "Visit Karun Jewellers" }
+      "settings": {
+        "eyebrow": "Our Showrooms",
+        "heading": "Visit Karun Jewellers"
+      }
     },
     "category_footer": {
       "type": "category-tiles",
       "blocks": {
-        "cat1": { "type": "tile", "settings": { "label": "Pearls", "placeholder_type": "necklace", "link": "/collections/necklaces" } },
-        "cat2": { "type": "tile", "settings": { "label": "Necklaces", "placeholder_type": "necklace", "link": "/collections/necklaces" } },
-        "cat3": { "type": "tile", "settings": { "label": "Bracelets", "placeholder_type": "bracelet", "link": "/collections/bracelets" } },
-        "cat4": { "type": "tile", "settings": { "label": "Rings", "placeholder_type": "ring", "link": "/collections/rings" } }
+        "cat1": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "necklace",
+            "label": "Pearls",
+            "link": "/collections/necklaces"
+          }
+        },
+        "cat2": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "necklace",
+            "label": "Necklaces",
+            "link": "/collections/necklaces"
+          }
+        },
+        "cat3": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "bracelet",
+            "label": "Bracelets",
+            "link": "/collections/bracelets"
+          }
+        },
+        "cat4": {
+          "type": "tile",
+          "settings": {
+            "placeholder_type": "ring",
+            "label": "Rings",
+            "link": "/collections/rings"
+          }
+        }
       },
-      "block_order": ["cat1", "cat2", "cat3", "cat4"],
-      "settings": { "heading": "Shop by Category" }
+      "block_order": [
+        "cat1",
+        "cat2",
+        "cat3",
+        "cat4"
+      ],
+      "settings": {
+        "heading": "Shop by Category"
+      }
     },
     "newsletter": {
       "type": "newsletter",
