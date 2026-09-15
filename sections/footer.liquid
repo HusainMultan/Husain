@@ -35,7 +35,7 @@
       <div>
         <h4>About</h4>
         <ul>
-          <li><a href="/pages/about-us">About Karun Jewellers</a></li>
+          <li><a href="/pages/about-us">About Karim Jewellers</a></li>
           <li><a href="/pages/about-us">Our Story</a></li>
           <li><a href="/pages/contact">Contact Us</a></li>
         </ul>
@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div style="max-width: 420px; margin: 40px auto 0; text-align: center;">
+    {% comment %} <div style="max-width: 420px; margin: 40px auto 0; text-align: center;">
       <h4 style="text-align:center;">Newsletter</h4>
       {% form 'customer', id: 'FooterNewsletterForm' %}
         <input type="hidden" name="contact[tags]" value="newsletter">
@@ -61,7 +61,7 @@
         </div>
         {%- if form.posted_successfully? -%}<p style="margin-top:10px;">{{ 'general.newsletter.success' | t }}</p>{%- endif -%}
       {% endform %}
-    </div>
+    </div> {% endcomment %}
 
     <div class="footer-bottom">
       <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
