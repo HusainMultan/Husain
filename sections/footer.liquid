@@ -2,7 +2,7 @@
   <div class="page-width">
     <div class="footer-grid">
       <div>
-        {% comment %} <a href="{{ routes.root_url }}" class="footer-logo" style="display:inline-block; margin-bottom: 16px;">{% render 'logo', class: 'footer-logo', context: 'footer' %}</a> {% endcomment %}
+        <a href="{{ routes.root_url }}"  style="display:inline-block; margin-bottom: 16px;">{% render 'logo', class: 'footer-logo', context: 'footer' %}</a>
         <p style="color: rgba(255,255,255,0.75); max-width: 32ch;">{{ section.settings.footer_text | default: "Timeless jewellery, thoughtfully chosen. Visit us in London and Birmingham." }}</p>
         <div class="footer-locations">
           <strong style="color:#fff;">{{ settings.london_label }}</strong> &middot; <strong style="color:#fff;">{{ settings.birmingham_label }}</strong>
