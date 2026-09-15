@@ -17,12 +17,12 @@
           "settings": {
             "image": "shopify://shop_images/Necklace_Banner_-_Karim_Jewellers.png",
             "placeholder_type": "necklace",
-            "eyebrow": "Karim Jewellers",
-            "heading": "Timeless Elegance, Beautifully Crafted",
-            "subtext": "Discover jewellery designed to celebrate life's most memorable moments.",
-            "primary_label": "Shop Jewellery",
+            "eyebrow": "",
+            "heading": "",
+            "subtext": "",
+            "primary_label": "",
             "primary_link": "/collections/all",
-            "secondary_label": "Explore Collections",
+            "secondary_label": "",
             "secondary_link": "/collections"
           }
         },
